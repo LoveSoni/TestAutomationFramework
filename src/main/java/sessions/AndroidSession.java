@@ -1,6 +1,6 @@
-package Sessions;
+package sessions;
 
-public class WebSession implements SessionManager {
+public class AndroidSession implements SessionManager {
     public void startSession(){
 
     }

@@ -1,6 +1,6 @@
-package Sessions;
+package sessions;
 
-public class IOSession implements SessionManager {
+public class WebSession implements SessionManager {
     public void startSession(){
 
     }

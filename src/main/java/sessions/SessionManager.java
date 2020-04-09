@@ -1,4 +1,4 @@
-package Sessions;
+package sessions;
 
 public interface SessionManager {
     public void startSession();

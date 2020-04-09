@@ -1,6 +1,6 @@
-package Sessions;
+package sessions;
 
-public class AndroidSession implements SessionManager {
+public class IOSession implements SessionManager {
     public void startSession(){
 
     }
