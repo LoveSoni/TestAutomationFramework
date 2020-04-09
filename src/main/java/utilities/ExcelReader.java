@@ -13,7 +13,7 @@ public class ExcelReader {
     private Logger logger = Logger.getLogger(ExcelReader.class);
     private XSSFWorkbook xssfWorkbook;
 
-    public void readExcelData(String filePath,String sheetName){
+    public Object[][] readExcelData(String filePath,String sheetName){
         try {
             fileInputStream = new FileInputStream(filePath);
         }catch (FileNotFoundException f)
@@ -28,6 +28,13 @@ public class ExcelReader {
         }
         XSSFSheet xssfSheet = xssfWorkbook.getSheet(sheetName);
         Object excelData[][] = new Object[xssfSheet.getLastRowNum()][xssfSheet.getRow(0).getLastCellNum()];
-    //TODO
+        for(int i=1;i<xssfSheet.getLastRowNum();i++)
+        {
+            for(int j=0;j<xssfSheet.getRow(1).getLastCellNum();j++)
+            {
+                excelData[i][j] = xssfSheet.getRow(i).getCell(j).getStringCellValue();
+            }
+        }
+        return excelData;
     }
 }
