@@ -3,7 +3,9 @@ package utilities;
 import org.apache.log4j.Logger;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.annotations.Test;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -28,11 +30,11 @@ public class ExcelReader {
         }
         XSSFSheet xssfSheet = xssfWorkbook.getSheet(sheetName);
         Object excelData[][] = new Object[xssfSheet.getLastRowNum()][xssfSheet.getRow(0).getLastCellNum()];
-        for(int i=1;i<xssfSheet.getLastRowNum();i++)
+        for(int i=0;i<xssfSheet.getLastRowNum();i++)
         {
             for(int j=0;j<xssfSheet.getRow(1).getLastCellNum();j++)
-            {
-                excelData[i][j] = xssfSheet.getRow(i).getCell(j).getStringCellValue();
+            {// here i+1 means move to 1 row
+                excelData[i][j] = xssfSheet.getRow(i+1).getCell(j).getStringCellValue();
             }
         }
         return excelData;
