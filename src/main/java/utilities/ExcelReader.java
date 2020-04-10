@@ -3,6 +3,7 @@ package utilities;
 import org.apache.log4j.Logger;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -12,26 +13,22 @@ public class ExcelReader {
     private Logger logger = Logger.getLogger(ExcelReader.class);
     private XSSFWorkbook xssfWorkbook;
 
-    public Object[][] readExcelData(String filePath,String sheetName){
+    public Object[][] readExcelData(String filePath, String sheetName) {
         try {
             fileInputStream = new FileInputStream(filePath);
-        }catch (FileNotFoundException f)
-        {
+        } catch (FileNotFoundException f) {
             logger.error(f.getMessage());
         }
         try {
             xssfWorkbook = new XSSFWorkbook(fileInputStream);
-        }catch (IOException i)
-        {
+        } catch (IOException i) {
             logger.error(i.getMessage());
         }
         XSSFSheet xssfSheet = xssfWorkbook.getSheet(sheetName);
         Object excelData[][] = new Object[xssfSheet.getLastRowNum()][xssfSheet.getRow(0).getLastCellNum()];
-        for(int i=0;i<xssfSheet.getLastRowNum();i++)
-        {
-            for(int j=0;j<xssfSheet.getRow(1).getLastCellNum();j++)
-            {// here i+1 means move to 1 row
-                excelData[i][j] = xssfSheet.getRow(i+1).getCell(j).getStringCellValue();
+        for (int i = 0; i < xssfSheet.getLastRowNum(); i++) {
+            for (int j = 0; j < xssfSheet.getRow(1).getLastCellNum(); j++) {// here i+1 means move to 1 row
+                excelData[i][j] = xssfSheet.getRow(i + 1).getCell(j).getStringCellValue();
             }
         }
         return excelData;
