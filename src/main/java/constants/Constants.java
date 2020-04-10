@@ -1,4 +1,4 @@
-package utilities;
+package constants;
 
 import java.io.File;
 
@@ -18,4 +18,6 @@ public class Constants {
         public static String CAPABILITIES_DIRECTORY_PATH = RESOURCE_DIRECTORY_PATH + slash + "capabilities";
 
         public static String ANDROID_CAPABILITIES_PATH = CAPABILITIES_DIRECTORY_PATH + slash + "androidCapabilities.properties";
+
+        public static String APPIUM_SERVER_LOG_LEVEL = "info";
 }
