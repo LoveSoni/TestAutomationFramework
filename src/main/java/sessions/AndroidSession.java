@@ -1,11 +1,15 @@
 package sessions;
 
+import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
+import io.appium.java_client.service.local.flags.GeneralServerFlag;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import utilities.Constants;
+import org.testng.annotations.Test;
+import constants.Constants;
 import utilities.PropertyReader;
 
+import java.net.InetAddress;
 import java.util.*;
 
 public class AndroidSession implements SessionManager {
@@ -15,10 +19,21 @@ public class AndroidSession implements SessionManager {
 
     }
 
-    public void startAppiumServer(){
+    public void startAppiumServer() throws  Exception{
         AppiumServiceBuilder appiumServiceBuilder = new AppiumServiceBuilder();
+        InetAddress inetAddress = InetAddress.getLocalHost();
         appiumServiceBuilder.usingAnyFreePort();
-        appiumServiceBuilder.withIPAddress("127.0.0.1");
+        appiumServiceBuilder.withCapabilities(capabilities());
+        appiumServiceBuilder.withArgument(GeneralServerFlag.LOG_LEVEL,Constants.APPIUM_SERVER_LOG_LEVEL);
+        appiumServiceBuilder.withIPAddress(inetAddress. getHostAddress());
+        AppiumDriverLocalService appiumDriverLocalService = AppiumDriverLocalService.buildService(appiumServiceBuilder);
+        appiumDriverLocalService.start();
+        logger.warn("Server started sucessfully");
+    }
+
+    @Test
+    public void testMethod() throws  Exception{
+        startAppiumServer();
     }
 
     public DesiredCapabilities capabilities(){
