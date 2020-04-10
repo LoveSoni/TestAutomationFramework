@@ -1,6 +1,7 @@
 package sessions;
 
 import constants.Constants;
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.appium.java_client.service.local.flags.GeneralServerFlag;
@@ -15,6 +16,8 @@ public interface SessionManager {
     public void initiateDriver();
 
     public void stopSession();
+
+    public AppiumDriver getDriver();
 
 
     default AppiumDriverLocalService startAppiumServer(){
