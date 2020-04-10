@@ -13,7 +13,9 @@ public class Constants {
 
         public static String JAVA_DIRECTORY_PATH = MAIN_DIRECTORY_PATH + slash + "java";
 
-        public static String RESOURCE_DIRECTORY_PATH = JAVA_DIRECTORY_PATH + slash + "resources";
+        public static String RESOURCE_DIRECTORY_PATH = MAIN_DIRECTORY_PATH + slash + "resources";
 
         public static String CAPABILITIES_DIRECTORY_PATH = RESOURCE_DIRECTORY_PATH + slash + "capabilities";
+
+        public static String ANDROID_CAPABILITIES_PATH = CAPABILITIES_DIRECTORY_PATH + slash + "androidCapabilities.properties";
 }
