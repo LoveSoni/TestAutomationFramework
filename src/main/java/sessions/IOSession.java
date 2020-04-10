@@ -1,6 +1,6 @@
 package sessions;
 
-public class IOSession implements SessionManager {
+public class IOSession {
     public void startSession(){
 
     }

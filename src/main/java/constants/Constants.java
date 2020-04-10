@@ -1,5 +1,7 @@
 package constants;
 
+import io.appium.java_client.service.local.flags.GeneralServerFlag;
+
 import java.io.File;
 
 public class Constants {
@@ -19,5 +21,9 @@ public class Constants {
 
         public static String ANDROID_CAPABILITIES_PATH = CAPABILITIES_DIRECTORY_PATH + slash + "androidCapabilities.properties";
 
-        public static String APPIUM_SERVER_LOG_LEVEL = "info";
+        public static String IOS_CAPABILITIES_PATH = CAPABILITIES_DIRECTORY_PATH + slash + "iosCapabilities.properties";
+
+        public static String SERVER_CAPABILITIES_PATH = CAPABILITIES_DIRECTORY_PATH + slash + "serverCapabilities.properties";
+
+        public static String APPIUM_SERVER_LOG_LEVEL = "warn";
 }

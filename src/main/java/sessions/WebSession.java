@@ -1,6 +1,6 @@
 package sessions;
 
-public class WebSession implements SessionManager {
+public class WebSession {
     public void startSession(){
 
     }
