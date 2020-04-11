@@ -1,6 +1,8 @@
 package library;
+/**
+ * author Love
+ */
 
-import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileBy;
 import org.openqa.selenium.By;
 import org.testng.Assert;
@@ -47,4 +49,5 @@ public class ElementLocator {
         }
         return by;
     }
+
 }
