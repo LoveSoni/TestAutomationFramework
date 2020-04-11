@@ -43,6 +43,7 @@ public class AppiumLibrary {
     public void enterText(String element, String text) {
         isElementPresent(element,DEFAULT_TIME_OUT);
         MobileElement mobileElement = getElememnt(element);
+        click(mobileElement);
         mobileElement.sendKeys(text);
     }
 
@@ -77,6 +78,27 @@ public class AppiumLibrary {
             logger.error("Element - "+element+" Not present ");
         }
         return found;
+    }
+
+    public String getText(String element){
+        isElementPresent(element,DEFAULT_TIME_OUT);
+        MobileElement mobileElement = getElememnt(element);
+        String text = mobileElement.getText();
+        return text;
+    }
+
+    public String getTextAttribute(String element){
+        isElementPresent(element,DEFAULT_TIME_OUT);
+        MobileElement mobileElement = getElememnt(element);
+        String text = mobileElement.getAttribute("text");
+        return text;
+    }
+
+    public String getAttributeValue(String element, String attribute){
+        isElementPresent(element,DEFAULT_TIME_OUT);
+        MobileElement mobileElement = getElememnt(element);
+        String text = mobileElement.getAttribute(attribute);
+        return text;
     }
 
     public MobileElement getElememnt(String element) {
