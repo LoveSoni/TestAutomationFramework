@@ -1,7 +1,8 @@
 package sessions;
 
-import io.appium.java_client.AppiumDriver;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 /**
@@ -9,17 +10,20 @@ import org.openqa.selenium.remote.DesiredCapabilities;
  */
 public class WebSession{
     private WebDriver driver;
+    private WebDriverManager webDriverManager;
+
     public void initiateDriver(){
-
+        WebDriverManager.chromiumdriver().setup();
+        driver = new ChromeDriver();
     }
 
-    public AppiumDriver getDriver(){
-        return (AppiumDriver) this.driver;
+    public WebDriver getDriver(){
+        return this.driver;
     }
 
-    public DesiredCapabilities clientCapabilities(){
-
-    }
+//    public DesiredCapabilities clientCapabilities(){
+//
+//    }
 
     public void startSession(){
 
