@@ -76,6 +76,7 @@ public class AppiumLibrary {
         }catch (TimeoutException t){
             logger.error("Element - "+element+" Not present ");
         }
+        return found;
     }
 
     public MobileElement getElememnt(String element) {
