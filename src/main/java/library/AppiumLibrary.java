@@ -3,6 +3,7 @@ package library;
 import constants.Constants;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.android.AndroidDriver;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -100,6 +101,19 @@ public class AppiumLibrary {
         String text = mobileElement.getAttribute(attribute);
         return text;
     }
+
+    public void closeKeyboard(){
+        driver.hideKeyboard();
+    }
+
+    public void removeApp(String bundleId){
+        driver.removeApp(bundleId);
+    }
+
+    public void closeApp(){
+        driver.closeApp();
+    }
+
 
     public MobileElement getElememnt(String element) {
         elementLocator = new ElementLocator();
