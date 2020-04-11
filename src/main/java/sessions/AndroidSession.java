@@ -10,6 +10,7 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.annotations.Test;
 import utilities.MobileSessionUtility;
 import utilities.PropertyReader;
 
@@ -31,6 +32,10 @@ public class AndroidSession implements SessionManager {
         }
     }
 
+    @Test
+    public void start() {
+        initiateDriver();
+    }
     public DesiredCapabilities clientCapabilities(){
         String ANDROID_CAPABILITIES_PATH = Constants.ANDROID_CAPABILITIES_PATH;
         Map<String,String> androidProperties = PropertyReader.getAllKeysAndValues(ANDROID_CAPABILITIES_PATH);
