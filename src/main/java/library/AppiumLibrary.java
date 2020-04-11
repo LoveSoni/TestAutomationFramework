@@ -5,6 +5,7 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.interactions.touch.TouchActions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import sessions.SessionManager;
@@ -40,8 +41,18 @@ public class AppiumLibrary {
         }
     }
 
-    public void enterText(String element) {
+    public void enterText(String element, String text) {
+        isElementPresent(element,DEFAULT_TIME_OUT);
+        MobileElement mobileElement = getElememnt(element);
+        mobileElement.sendKeys(text);
+    }
 
+    public int getScreenHeight(){
+        return driver.manage().window().getSize().getHeight();
+    }
+
+    public int getScreenWidth(){
+        return driver.manage().window().getSize().getWidth();
     }
 
     public boolean isElementPresent(String element, int time) {
