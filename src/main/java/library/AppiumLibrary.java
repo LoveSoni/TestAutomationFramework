@@ -5,7 +5,6 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.interactions.touch.TouchActions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import sessions.SessionManager;
@@ -55,6 +54,7 @@ public class AppiumLibrary {
         return driver.manage().window().getSize().getWidth();
     }
 
+
     public boolean isElementPresent(String element, int time) {
         boolean found = false;
         try {
@@ -65,6 +65,17 @@ public class AppiumLibrary {
             logger.error("Element - " + element + " Not Present");
         }
         return found;
+    }
+
+    public boolean areElementPresent(String element, int time){
+        boolean found = false;
+        try{
+            WebDriverWait webDriverWait = new WebDriverWait(driver,time);
+            webDriverWait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(elementLocator.locateElement(element)));
+            found = true;
+        }catch (TimeoutException t){
+            logger.error("Element - "+element+" Not present ");
+        }
     }
 
     public MobileElement getElememnt(String element) {
