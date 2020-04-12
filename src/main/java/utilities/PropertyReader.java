@@ -4,6 +4,8 @@ package utilities;
  * Love
  */
 
+import com.sun.tools.internal.jxc.ap.Const;
+import constants.Constants;
 import org.apache.log4j.Logger;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -35,5 +37,9 @@ public class PropertyReader {
             map.put(entry.getKey(),entry.getValue());
         }
         return map;
+    }
+
+    public static Properties readLocatorProperties(String filePath){
+        return readProperty(Constants.LOCATORS_DIRECTORY_PATH + Constants.slash + filePath);
     }
 }
