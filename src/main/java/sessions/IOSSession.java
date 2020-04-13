@@ -57,6 +57,7 @@ public class IOSSession implements SessionManager {
 
     @Override
     public void stopSession(){
-
+        appiumDriverLocalService.stop();
+        appiumDriver.quit();
     }
 }

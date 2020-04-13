@@ -44,18 +44,9 @@ public class SearchTest extends BaseClass {
     public void verifyUserIsOnQuerySearchResult(){
         searchFlow.selectQuerySearchResult();
         String expectedResult = "App/Search/Query Search Results";
+        logger.info("Expected Query Search Title -"+expectedResult);
         String actualResult = searchFlow.fetchQueryTitle();
-        Assert.assertEquals(expectedResult,actualResult,"Query Search Title does not match");
-    }
-
-    @Test
-    public void verifyTextAfterReclickOnSearchButton(){
-        String expectedResult = "mylo";
-        searchFlow.onSearchAndEnterText(expectedResult);
-        logger.info("Verify that "+expectedResult +"should be display in search field");
-        String actualResult = searchFlow.clickOnRequestedAndGetSearchText();
-        // when the user click again on the requested search button after entering the value
-        // enter text should be automatically removed
+        logger.info("Actual Query Search Title -"+actualResult);
         Assert.assertEquals(expectedResult,actualResult);
     }
 
@@ -69,6 +60,7 @@ public class SearchTest extends BaseClass {
     @Test
     public void onlyEnterPrefilQueryAndVerifySearchResult(){
         String prefixText = "mylo";
+        searchFlow.selectInvokeSearch();
         searchFlow.enterOnlyPrefilQuery(prefixText);
         String actualResult = searchFlow.clickOnRequestedAndGetSearchText();
         Assert.assertEquals(prefixText,actualResult);
