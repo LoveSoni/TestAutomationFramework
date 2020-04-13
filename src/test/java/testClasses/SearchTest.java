@@ -6,6 +6,7 @@ import org.junit.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import testFlows.SearchFlow;
+import utilities.JavaUtility;
 
 public class SearchTest extends BaseClass {
     /**
@@ -37,7 +38,6 @@ public class SearchTest extends BaseClass {
         logger.info("Now verify that search text and prefill text should be same");
         Assert.assertEquals(actualResult , prefilQuery); // prefilQuery is the expected result
     }
-
 
 
     @Test

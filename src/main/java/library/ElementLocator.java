@@ -11,7 +11,7 @@ import org.testng.Assert;
 public class ElementLocator {
 
     public By locateElement(String query){
-        String locator[] = query.split("_");
+        String locator[] = query.split("_",2);
         String locatorType = locator[0];
         String locatorValue = locator[1];
         By by = null;

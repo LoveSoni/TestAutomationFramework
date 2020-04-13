@@ -8,6 +8,7 @@ import constants.Constants;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -61,13 +62,13 @@ public class AppiumLibrary {
 
 
     public boolean isElementPresent(String element, int time) {
-        boolean found = false;
+        boolean found = false;;
         try {
             WebDriverWait webDriverWait = new WebDriverWait(driver, time);
             webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(elementLocator.locateElement(element)));
-            found = false;
+            found = true;
         } catch (TimeoutException timeoutException) {
-            logger.error("Element - " + element + " Not Present");
+            logger.error("Element - " + elementLocator.locateElement(element) + " Not Present");
         }
         return found;
     }
