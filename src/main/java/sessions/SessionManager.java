@@ -20,6 +20,8 @@ public interface SessionManager {
 
     public void initiateDriver();
 
+    public void startSession();
+
     public void stopSession();
 
     public AppiumDriver getDriver();

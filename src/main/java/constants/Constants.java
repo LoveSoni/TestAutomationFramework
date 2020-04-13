@@ -4,11 +4,12 @@ package constants;
  * author Love
  */
 
-import utilities.EnvironmentParameter;
+import utilities.EnvironmentFields;
 
 import java.io.File;
 
 public class Constants {
+
         public static String PROJECT_PATH = System.getProperty("user.dir");
 
         public static String slash = File.separator;
@@ -19,9 +20,13 @@ public class Constants {
 
         public static String JAVA_DIRECTORY_PATH = MAIN_DIRECTORY_PATH + slash + "java";
 
-        public static String LOCATORS_DIRECTORY_PATH = JAVA_DIRECTORY_PATH + slash + "locators" + EnvironmentParameter.getPlatformOs();
-
         public static String RESOURCE_DIRECTORY_PATH = MAIN_DIRECTORY_PATH + slash + "resources";
+
+        public static String ENVIRONEMENTS_DIRECTORY_PATH = RESOURCE_DIRECTORY_PATH + slash + "environments";
+
+        public static String DEFAULT_ENVIRONMENT_PATH = ENVIRONEMENTS_DIRECTORY_PATH + slash + "defaultEnvironment.properties";
+
+        public static String LOCATORS_DIRECTORY_PATH = MAIN_DIRECTORY_PATH + slash + "locators" + slash + EnvironmentFields.getPlatformOs();
 
         public static String CAPABILITIES_DIRECTORY_PATH = RESOURCE_DIRECTORY_PATH + slash + "capabilities";
 
@@ -31,11 +36,7 @@ public class Constants {
 
         public static String SERVER_CAPABILITIES_PATH = CAPABILITIES_DIRECTORY_PATH + slash + "serverCapabilities.properties";
 
-        public static String ENVIRONEMENTS_DIRECTORY_PATH = RESOURCE_DIRECTORY_PATH + slash + "environments";
-
-        public static String DEFAULT_ENVIRONMENT_PROPERITES_PATH = ENVIRONEMENTS_DIRECTORY_PATH + slash + ENVIRONEMENTS_DIRECTORY_PATH;
-
-        public static String APPIUM_SERVER_LOG_LEVEL = "info";
+        public static String APPIUM_SERVER_LOG_LEVEL = "warn";
 
         public static int ELEMENT_EXPLICIT_WAIT = 15;
 }

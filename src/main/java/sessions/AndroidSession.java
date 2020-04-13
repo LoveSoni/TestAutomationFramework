@@ -23,8 +23,15 @@ public class AndroidSession implements SessionManager {
     private AppiumDriver appiumDriver;
     private AppiumDriverLocalService appiumDriverLocalService;
 
-    public void initiateDriver(){
+
+    @Override
+    public void startSession(){
         appiumDriverLocalService = startAppiumServer();
+        logger.info("Appium Server Started Successfully");
+    }
+
+    public void initiateDriver(){
+
         try {
             appiumDriver = new AndroidDriver(new URL(getUrl()), clientCapabilities());
         }catch (MalformedURLException e){
@@ -32,10 +39,6 @@ public class AndroidSession implements SessionManager {
         }
     }
 
-    @Test
-    public void start() {
-        initiateDriver();
-    }
     public DesiredCapabilities clientCapabilities(){
         String ANDROID_CAPABILITIES_PATH = Constants.ANDROID_CAPABILITIES_PATH;
         Map<String,String> androidProperties = PropertyReader.getAllKeysAndValues(ANDROID_CAPABILITIES_PATH);
@@ -43,6 +46,7 @@ public class AndroidSession implements SessionManager {
         return desiredCapabilities;
     }
 
+    @Override
     public AppiumDriver getDriver()
     {
         return this.appiumDriver;
@@ -52,6 +56,7 @@ public class AndroidSession implements SessionManager {
         return appiumDriverLocalService.getUrl().toString();
     }
 
+    @Override
     public void stopSession(){
         logger.info("Appium Server is getting closed");
         appiumDriverLocalService.stop();

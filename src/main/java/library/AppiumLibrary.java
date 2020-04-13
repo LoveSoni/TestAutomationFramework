@@ -16,7 +16,7 @@ import sessions.SessionManager;
 public class AppiumLibrary {
     private AppiumDriver driver;
     private Logger logger = Logger.getLogger(AppiumLibrary.class);
-    private ElementLocator elementLocator;
+    private ElementLocator elementLocator = new ElementLocator();
     private int DEFAULT_TIME_OUT = Constants.ELEMENT_EXPLICIT_WAIT;
 
     public AppiumLibrary(SessionManager sessionManager) {
