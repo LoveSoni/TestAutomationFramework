@@ -4,7 +4,6 @@ package utilities;
  * Love
  */
 
-import com.sun.tools.internal.jxc.ap.Const;
 import constants.Constants;
 import org.apache.log4j.Logger;
 import java.io.FileInputStream;
