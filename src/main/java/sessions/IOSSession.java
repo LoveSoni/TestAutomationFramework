@@ -23,7 +23,7 @@ public class IOSSession implements SessionManager {
     private AppiumDriverLocalService appiumDriverLocalService;
 
     @Override
-    public void startSession(){
+    public synchronized void startSession(){
         logger.info("Appium Server Started Successfully");
         appiumDriverLocalService = startAppiumServer();
     }

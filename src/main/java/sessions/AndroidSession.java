@@ -10,7 +10,6 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.testng.annotations.Test;
 import utilities.MobileSessionUtility;
 import utilities.PropertyReader;
 
@@ -30,7 +29,7 @@ public class AndroidSession implements SessionManager {
         logger.info("Appium Server Started Successfully");
     }
 
-    public void initiateDriver(){
+    public synchronized void initiateDriver(){
 
         try {
             appiumDriver = new AndroidDriver(new URL(getUrl()), clientCapabilities());
@@ -61,4 +60,5 @@ public class AndroidSession implements SessionManager {
         logger.info("Appium Server is getting closed");
         appiumDriverLocalService.stop();
     }
+
 }

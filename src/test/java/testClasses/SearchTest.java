@@ -6,7 +6,6 @@ import org.junit.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import testFlows.SearchFlow;
-import utilities.JavaUtility;
 
 public class SearchTest extends BaseClass {
     /**

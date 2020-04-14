@@ -29,7 +29,7 @@ public interface SessionManager {
     public DesiredCapabilities clientCapabilities();
 
 
-    default AppiumDriverLocalService startAppiumServer(){
+        default AppiumDriverLocalService startAppiumServer(){
         AppiumDriverLocalService appiumDriverLocalService = null;
         AppiumServiceBuilder appiumServiceBuilder = new AppiumServiceBuilder();
         InetAddress inetAddress  = null;
