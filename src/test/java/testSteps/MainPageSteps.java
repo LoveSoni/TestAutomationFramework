@@ -1,6 +1,5 @@
 package testSteps;
 
-import constants.Constants;
 import library.AppiumLibrary;
 import sessions.SessionManager;
 import utilities.PropertyReader;
@@ -24,7 +23,7 @@ public class MainPageSteps {
     }
 
     public void selectAppOption(){
-        appiumLibrary.click(mainPage.getProperty("app"));
+        appiumLibrary.click(mainPage.getProperty("appOption"));
     }
 
     public void selectContentOption(){
