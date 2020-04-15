@@ -1,23 +1,29 @@
 package utilities;
 
-import org.testng.annotations.Test;
+import constants.Defaults;
+import java.util.Properties;
 
 public class EnvironmentFields {
-    private static String platformOs = System.getProperty("mobilePlatform");
 
-    private static String defaultOs = "android";
+    private  static  Properties defaultEnvironmentProperties = PropertyReader.readProperty(Defaults.DEFAULT_ENVIRONMENT_PATH);
 
+    private static String testEnvironment = System.getProperty("testEnvironment");
 
-    public static String getPlatformOs(){
+    private static String platformOs = System.getProperty("platformOs");
+
+    public static  String getPlatformOs(){
         return platformOs == null ? getDefaultPlatformOs() : platformOs;
     }
 
     public static String getDefaultPlatformOs(){
-        return defaultOs;
+        return defaultEnvironmentProperties.getProperty("platformOs");
     }
 
-    @Test
-    public void test(){
-        System.out.print(getPlatformOs());
+    public static String getTestEnvironment(){
+        return testEnvironment == null ?  getDefaultTestEnv() :testEnvironment;
+    }
+
+    public static String getDefaultTestEnv(){
+        return defaultEnvironmentProperties.getProperty("testEnvironment");
     }
 }

@@ -18,13 +18,11 @@ public class Constants {
 
         public static String MAIN_DIRECTORY_PATH = SRC_DIRECTORY_PATH + slash + "main";
 
-        public static String JAVA_DIRECTORY_PATH = MAIN_DIRECTORY_PATH + slash + "java";
-
         public static String RESOURCE_DIRECTORY_PATH = MAIN_DIRECTORY_PATH + slash + "resources";
 
         public static String ENVIRONEMENTS_DIRECTORY_PATH = RESOURCE_DIRECTORY_PATH + slash + "environments";
 
-        public static String DEFAULT_ENVIRONMENT_PATH = ENVIRONEMENTS_DIRECTORY_PATH + slash + "defaultEnvironment.properties";
+        public static String JAVA_DIRECTORY_PATH = MAIN_DIRECTORY_PATH + slash + "java";
 
         public static String LOCATORS_DIRECTORY_PATH = MAIN_DIRECTORY_PATH + slash + "locators" + slash + EnvironmentFields.getPlatformOs();
 

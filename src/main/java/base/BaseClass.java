@@ -4,11 +4,8 @@ package base;
  */
 
 import org.apache.log4j.Logger;
-import org.junit.Before;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
 import sessions.AndroidSession;
 import sessions.IOSSession;
 import sessions.SessionManager;
