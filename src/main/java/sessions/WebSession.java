@@ -6,7 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 /**
- * Love
+ * author Love
  */
 public class WebSession{
     private WebDriver driver;

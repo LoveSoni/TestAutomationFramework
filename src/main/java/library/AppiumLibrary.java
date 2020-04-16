@@ -1,7 +1,7 @@
 package library;
 
 /**
- * Love
+ * author Love
  */
 
 import constants.Constants;

@@ -3,7 +3,7 @@ package constants;
 import java.io.File;
 
 /**
- * Love
+ * author Love
  */
 public class Defaults {
     private static String slash = File.separator;

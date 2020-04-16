@@ -1,7 +1,7 @@
 package utilities;
 
 /**
- * Love
+ * author Love
  */
 
 import constants.Constants;
@@ -9,11 +9,11 @@ import org.apache.log4j.Logger;
 import java.sql.*;
 import java.util.Properties;
 
-public class SQlUtility {
-    private Logger logger = Logger.getLogger(SQlUtility.class);
+public class SQLUtility {
+    private Logger logger = Logger.getLogger(SQLUtility.class);
     private Properties connectionProperties = PropertyReader.readProperty(Constants.ENVIRONEMENT_PROPERTIES_PATH);
 
-    public SQlUtility(String dbType) {
+    public SQLUtility(String dbType) {
         String dbUrl =  connectionProperties.getProperty(dbType+"dbUrl");
         String dbUsername = connectionProperties.getProperty(dbType+"dbUsername");
         String dbPassword = connectionProperties.getProperty(dbType+"dbPassword");
