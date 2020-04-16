@@ -1,6 +1,7 @@
 package utilities;
 
 import org.apache.log4j.Logger;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -30,6 +31,25 @@ public class JsonUtility {
             logger.error(i.getMessage());
         }
         return jsonObject;
+    }
+
+    public static JSONArray getFileAsJsonArray(String filePath){
+        FileReader fileReader = null;
+        JSONArray jsonArray = null;
+        try{
+            fileReader = new FileReader(filePath);
+        }catch (FileNotFoundException f)
+        {
+            logger.error(f.getMessage());
+        }
+        JSONParser jsonParser = new JSONParser();
+        try {
+          jsonArray = (JSONArray) jsonParser.parse(fileReader);
+        }catch (ParseException | IOException i)
+        {
+            logger.error(i.getMessage());
+        }
+        return jsonArray
     }
 
 }
