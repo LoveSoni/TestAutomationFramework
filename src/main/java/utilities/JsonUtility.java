@@ -49,7 +49,19 @@ public class JsonUtility {
         {
             logger.error(i.getMessage());
         }
-        return jsonArray
+        return jsonArray;
+    }
+
+    public static JSONObject getJsonObjectFromString(String jsonString){
+        JSONObject jsonObject = null;
+        JSONParser jsonParser = new JSONParser();
+        try {
+            jsonObject = (JSONObject)jsonParser.parse(jsonString);
+        }catch (ParseException e)
+        {
+            logger.error(e.getMessage());
+        }
+        return jsonObject;
     }
 
 }
