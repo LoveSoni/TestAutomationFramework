@@ -14,54 +14,58 @@ public class JsonUtility {
 
     private static Logger logger = Logger.getLogger(JsonUtility.class);
 
-    public static JSONObject  getFileAsJsonObject(String filePath){
+    public static JSONObject getFileAsJsonObject(String filePath) {
         FileReader fileReader = null;
         JSONObject jsonObject = null;
         try {
             fileReader = new FileReader(filePath);
-        }catch (FileNotFoundException f)
-        {
+        } catch (FileNotFoundException f) {
             logger.error(f.getMessage());
         }
         JSONParser jsonParser = new JSONParser();
         try {
-          jsonObject = (JSONObject) jsonParser.parse(fileReader);
-        }catch (ParseException | IOException i)
-        {
+            jsonObject = (JSONObject) jsonParser.parse(fileReader);
+        } catch (ParseException | IOException i) {
             logger.error(i.getMessage());
         }
         return jsonObject;
     }
 
-    public static JSONArray getFileAsJsonArray(String filePath){
+    public static JSONArray getFileAsJsonArray(String filePath) {
         FileReader fileReader = null;
         JSONArray jsonArray = null;
-        try{
+        try {
             fileReader = new FileReader(filePath);
-        }catch (FileNotFoundException f)
-        {
+        } catch (FileNotFoundException f) {
             logger.error(f.getMessage());
         }
         JSONParser jsonParser = new JSONParser();
         try {
-          jsonArray = (JSONArray) jsonParser.parse(fileReader);
-        }catch (ParseException | IOException i)
-        {
+            jsonArray = (JSONArray) jsonParser.parse(fileReader);
+        } catch (ParseException | IOException i) {
             logger.error(i.getMessage());
         }
         return jsonArray;
     }
 
-    public static JSONObject getJsonObjectFromString(String jsonString){
+    public static JSONObject getJsonObjectFromString(String jsonString) {
         JSONObject jsonObject = null;
         JSONParser jsonParser = new JSONParser();
         try {
-            jsonObject = (JSONObject)jsonParser.parse(jsonString);
-        }catch (ParseException e)
-        {
+            jsonObject = (JSONObject) jsonParser.parse(jsonString);
+        } catch (ParseException e) {
             logger.error(e.getMessage());
         }
         return jsonObject;
     }
 
+    public static void closeFile(FileReader fileReader) {
+        if (fileReader != null) {
+            try {
+                fileReader.close();
+            } catch (IOException e) {
+                logger.error(e.getMessage());
+            }
+        }
+    }
 }
