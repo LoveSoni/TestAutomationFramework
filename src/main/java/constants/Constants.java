@@ -18,11 +18,9 @@ public class Constants {
 
         public static String MAIN_DIRECTORY_PATH = SRC_DIRECTORY_PATH + slash + "main";
 
-        public static String RESOURCE_DIRECTORY_PATH = MAIN_DIRECTORY_PATH + slash + "resources";
-
-        public static String ENVIRONEMENTS_DIRECTORY_PATH = RESOURCE_DIRECTORY_PATH + slash + "environments";
-
         public static String JAVA_DIRECTORY_PATH = MAIN_DIRECTORY_PATH + slash + "java";
+
+        public static String RESOURCE_DIRECTORY_PATH = MAIN_DIRECTORY_PATH + slash + "resources";
 
         public static String LOCATORS_DIRECTORY_PATH = MAIN_DIRECTORY_PATH + slash + "locators" + slash + EnvironmentFields.getPlatformOs();
 
@@ -33,6 +31,10 @@ public class Constants {
         public static String IOS_CAPABILITIES_PATH = CAPABILITIES_DIRECTORY_PATH + slash + "iosCapabilities.properties";
 
         public static String SERVER_CAPABILITIES_PATH = CAPABILITIES_DIRECTORY_PATH + slash + "serverCapabilities.properties";
+
+        public static String ENVIRONEMENTS_DIRECTORY_PATH = RESOURCE_DIRECTORY_PATH + slash + "environments";
+
+        public static String ENVIRONEMENT_PROPERTIES_PATH = ENVIRONEMENTS_DIRECTORY_PATH + slash + EnvironmentFields.getDefaultTestEnv() + ".properties";
 
         public static String APPIUM_SERVER_LOG_LEVEL = "warn";
 
