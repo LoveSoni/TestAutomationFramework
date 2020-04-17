@@ -32,6 +32,7 @@ public class SQLUtility {
 
    public void closeDBConnection(){
         try {
+            statement.close();
             connection.close();
             logger.info("DB Connection Closed Succesfully ");
         }catch (SQLException e)
