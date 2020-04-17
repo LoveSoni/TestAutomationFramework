@@ -41,4 +41,5 @@ public class PropertyReader {
     public static Properties readLocatorProperties(String filePath) {
         return readProperty(Constants.LOCATORS_DIRECTORY_PATH + Constants.slash + filePath);
     }
+
 }
