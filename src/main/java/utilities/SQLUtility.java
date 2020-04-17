@@ -33,7 +33,7 @@ public class SQLUtility {
    public void closeDBConnection(){
         try {
             connection.close();
-            logger.info("DB Connection Close Succesfully ");
+            logger.info("DB Connection Closed Succesfully ");
         }catch (SQLException e)
         {
             logger.error(e.getMessage());
