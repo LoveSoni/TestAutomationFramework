@@ -26,8 +26,5 @@ public class SQLUtility {
             logger.error(e.getMessage());
         }
     }
-    public static void main(String args[])
-    {
-        SQLUtility sqlUtility = new SQLUtility("demo");
-    }
+
 }
