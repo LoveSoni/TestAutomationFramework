@@ -24,5 +24,9 @@ public class ShellExecutor {
         return output;
     }
 
+    public void getListOFDevices(){
+
+    }
+
 
 }
