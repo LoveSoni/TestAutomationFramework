@@ -36,6 +36,10 @@ public class Constants {
 
         public static String ENVIRONEMENT_PROPERTIES_PATH = ENVIRONEMENTS_DIRECTORY_PATH + slash + EnvironmentFields.getDefaultTestEnv() + ".properties";
 
+        public static String SHELL_COMMAND_DIRECTORY_PATH = RESOURCE_DIRECTORY_PATH + slash + "shellCommands";
+
+        public static String SHELL_COMMAND_PROPERTIES_PATH = SHELL_COMMAND_DIRECTORY_PATH + slash + EnvironmentFields.getPlatformOs() + "Command.properties";
+
         public static String APPIUM_SERVER_LOG_LEVEL = "warn";
 
         public static int ELEMENT_EXPLICIT_WAIT = 15;
