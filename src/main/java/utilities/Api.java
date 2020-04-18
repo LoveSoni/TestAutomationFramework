@@ -1,7 +1,6 @@
 package utilities;
 
 import org.json.simple.JSONObject;
-
 import java.util.Map;
 
 public class Api {
@@ -9,9 +8,16 @@ public class Api {
 
     private String url;
 
-    private Map<String,String> queryParams;
+    private Map<String, String> queryParams;
 
-    private Map<String,String> path;
+    private String path;
+
+    public Api(String httpMethod, String url, String path, Map<String, String> headers) {
+        this.httpMethod = httpMethod;
+        this.url = url;
+        this.path = path;
+        this.headers = headers;
+    }
 
     public String getHttpMethod() {
         return httpMethod;
@@ -37,11 +43,11 @@ public class Api {
         this.queryParams = queryParams;
     }
 
-    public Map<String, String> getPath() {
+    public String getPath() {
         return path;
     }
 
-    public void setPath(Map<String, String> path) {
+    public void setPath(String path) {
         this.path = path;
     }
 
@@ -61,7 +67,8 @@ public class Api {
         this.requestJson = requestJson;
     }
 
-    private Map<String,String> headers;
+    private Map<String, String> headers;
 
     private JSONObject requestJson;
+
 }
