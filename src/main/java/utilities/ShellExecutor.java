@@ -1,8 +1,6 @@
 package utilities;
 
 import org.apache.log4j.Logger;
-import org.testng.annotations.Test;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -10,7 +8,6 @@ import java.io.InputStreamReader;
 public class ShellExecutor {
     private Logger logger = Logger.getLogger(ShellExecutor.class);
 
-    @Test
     public static StringBuilder executeCommand(String command){
         StringBuilder output = new StringBuilder();
         try {
