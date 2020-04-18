@@ -2,7 +2,6 @@ package utilities;
 
 import constants.Constants;
 import org.apache.log4j.Logger;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -30,7 +29,5 @@ public class ShellExecutor {
     public static void getListOfConnectedDevices() {
         executeCommand(commandProperties.getProperty("devicesList"));
     }
-
-
 
 }
