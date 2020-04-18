@@ -1,6 +1,7 @@
 package utilities;
 
 import org.json.simple.JSONObject;
+
 import java.util.Map;
 
 public class Api {
@@ -17,6 +18,14 @@ public class Api {
         this.url = url;
         this.path = path;
         this.headers = headers;
+    }
+
+    public Api(String httpMethod, String url, String path, Map<String, String> headers, JSONObject requestJson) {
+        this.httpMethod = httpMethod;
+        this.url = url;
+        this.path = path;
+        this.headers = headers;
+        this.requestJson = requestJson;
     }
 
     public String getHttpMethod() {
