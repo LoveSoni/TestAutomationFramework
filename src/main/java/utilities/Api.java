@@ -30,11 +30,6 @@ public class Api {
         this.queryParams = queryParams;
     }
 
-//String method, String URL, Map<String, String> headers
-//String method, String URL, Map<String, String> headers, JSONObject body
-//String method, String URL, Map<String, String> headers, HttpEntity httpEntity
-
-
     public String getHttpMethod() {
         return httpMethod;
     }
