@@ -1,17 +1,11 @@
 package utilities;
 
-import org.json.simple.JSONObject;
 
+import org.json.simple.JSONObject;
+import java.util.HashMap;
 import java.util.Map;
 
 public class Api {
-    private String httpMethod;
-
-    private String url;
-
-    private Map<String, String> queryParams;
-
-    private String path;
 
     public Api(String httpMethod, String url, String path, Map<String, String> headers) {
         this.httpMethod = httpMethod;
@@ -20,13 +14,26 @@ public class Api {
         this.headers = headers;
     }
 
-    public Api(String httpMethod, String url, String path, Map<String, String> headers, JSONObject requestJson) {
+    public Api(String httpMethod, String url, String path,JSONObject requestJson, Map<String, String> headers) {
         this.httpMethod = httpMethod;
         this.url = url;
         this.path = path;
         this.headers = headers;
         this.requestJson = requestJson;
     }
+
+    public Api(String httpMethod,String url,String path, Map<String,String> headers,Map<String,String> queryParams) {
+        this.httpMethod = httpMethod;
+        this.url = url;
+        this.path = path;
+        this.headers = headers;
+        this.queryParams = queryParams;
+    }
+
+//String method, String URL, Map<String, String> headers
+//String method, String URL, Map<String, String> headers, JSONObject body
+//String method, String URL, Map<String, String> headers, HttpEntity httpEntity
+
 
     public String getHttpMethod() {
         return httpMethod;
@@ -75,6 +82,14 @@ public class Api {
     public void setRequestJson(JSONObject requestJson) {
         this.requestJson = requestJson;
     }
+
+    private String httpMethod;
+
+    private String url;
+
+    private Map<String, String> queryParams;
+
+    private String path;
 
     private Map<String, String> headers;
 
