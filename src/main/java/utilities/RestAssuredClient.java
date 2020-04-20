@@ -5,6 +5,7 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.apache.log4j.Logger;
+import org.json.simple.JSONObject;
 import org.testng.annotations.Test;
 
 import java.util.HashMap;
@@ -32,7 +33,18 @@ public class RestAssuredClient {
 
     @Test
     public void postRequest(){
-        RestAssured.baseURI = "";
+        RestAssured.baseURI = "https://gorest.co.in";
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("gender","male");
+        jsonObject.put("last_name","lastdfTime");
+        jsonObject.put("first_name","firstdfTime");
+        jsonObject.put("email","timssddffdfd@gmail.com");
+        RequestSpecification requestSpecification = RestAssured.given();
+        requestSpecification.contentType(ContentType.JSON);
+        requestSpecification.body(jsonObject);
+        Response response = requestSpecification.post("/public-api/users");
+        System.out.print(response.getStatusCode());
+        System.out.print(response.getBody().asString());
     }
 
 }
