@@ -18,6 +18,7 @@ public class RestClient implements Comparator {
       treeSet.add("slash");
       treeSet.add("peek");
       System.out.print(treeSet);
+      System.out.print(System.getProperty("define"));
   }
 }
 
