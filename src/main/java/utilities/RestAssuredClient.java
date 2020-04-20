@@ -25,9 +25,14 @@ public class RestAssuredClient {
         queryParams.put("first_name","first");
         requestSpecification.queryParams(queryParams);
         requestSpecification.contentType(ContentType.JSON);
-        Response response = requestSpecification.post("public-api/users");
+        Response response = requestSpecification.get("public-api/users");
         logger.info("Status code is :"+response.statusCode());
         logger.info("Response is: "+response.getBody().asString());
+    }
+
+    @Test
+    public void postRequest(){
+        RestAssured.baseURI = "";
     }
 
 }
