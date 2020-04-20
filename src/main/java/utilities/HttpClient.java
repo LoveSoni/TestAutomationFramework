@@ -22,7 +22,6 @@ public class HttpClient {
         queryParams.put("first_name","first");
          url = buildUrlUsingParam(url,queryParams);
          logger.info("URL - "+url);
-
     }
 
     public String buildUrlUsingParam(String url, Map<String,String> queryParams)
