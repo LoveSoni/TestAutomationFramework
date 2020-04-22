@@ -1,7 +1,6 @@
 package ApiSession;
 
 import io.restassured.RestAssured;
-import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.apache.log4j.Logger;
 
@@ -16,17 +15,20 @@ public class RestAssuredSession implements ApiManager{
     public void sendRequest(Api api){
         RestAssured.baseURI = api.getUrl();
         RequestSpecification requestSpecification = RestAssured.given();
+        requestSpecification.headers(api.getHeaders());
     }
+
+
 
     public String getHttpMethod(Api api){
         return "";
     }
 
-    public boolean isQueryParamsEnable(Api api){
+    public boolean setIfQueryParamAvailable(Api api){
         return true;
     }
 
-    public boolean isRequestEnable(Api api){
+    public boolean setIfRequestEnable(Api api){
         return true;
     }
 }

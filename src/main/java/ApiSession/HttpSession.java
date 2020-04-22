@@ -14,14 +14,14 @@ public class HttpSession implements ApiManager{
     }
 
     public String getHttpMethod(Api api){
-
+        return "";
     }
 
-    public boolean isQueryParamsEnable(Api api){
+    public boolean setIfQueryParamAvailable(Api api){
         return true;
     }
 
-    public boolean isRequestEnable(Api api){
+    public boolean setIfRequestEnable(Api api){
         return true;
     }
 

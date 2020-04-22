@@ -1,15 +1,14 @@
 package ApiSession;
 
-import java.util.Map;
 
 public interface ApiManager {
 
     public void sendRequest(Api obj);
 
-    public String getHttpMethod(Api api);
+    public Object getHttpMethod(Api api);
 
-    public boolean isQueryParamsEnable(Api api);
+    public boolean setIfQueryParamAvailable(Api api);
 
-    public boolean isRequestEnable(Api api);
+    public boolean setIfRequestEnable(Api api);
 
 }
