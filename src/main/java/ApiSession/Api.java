@@ -2,14 +2,12 @@ package ApiSession;
 
 
 import org.json.simple.JSONObject;
-
-import java.util.HashMap;
 import java.util.Map;
 
 public class Api {
 
     public enum HttpMethod{
-        GET,POST,PUT,DELETE;
+        GET,POST,PUT,PATCH;
     }
 
     public Api(){
@@ -72,16 +70,5 @@ public class Api {
     public JSONObject getRequestJson() {
         return requestJson;
     }
-
-    public static void main(String args[]){
-        Api api = new Api();
-        api.setHttpMethod(HttpMethod.GET);
-        api.setUrl("https://reqres.in");
-        api.setPath("/api/users/2");
-        Map<String,String> map = new HashMap<>();
-        map.put("Content-Type","application/xml");
-        api.setHeaders(map);
-    }
-
 
 }
