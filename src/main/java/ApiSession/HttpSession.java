@@ -19,6 +19,8 @@ public class HttpSession {
         CloseableHttpClient httpClient = HttpClients.createDefault();
         api.setUrl(constructUrlWithQueryParam(api));
         HttpRequestBase httpRequestBase = getHttpMethod(api);
+        setHttpHeaders(api,httpRequestBase);
+        setIfRequestEnable(api,httpRequestBase);
     }
 
     public String constructUrlWithQueryParam(Api api){
@@ -60,16 +62,15 @@ public class HttpSession {
         return httpRequestBase;
     }
 
-    public String setHttpHeaders(Api api){
-        return "";
+    public void setHttpHeaders(Api api,HttpRequestBase httpRequestBase){
+        Map<String,String> headers = api.getHeaders();
+        for(Map.Entry<String,String> entry : headers.entrySet()){
+            httpRequestBase.addHeader(entry.getKey(),entry.getValue());
+        }
     }
 
-    public boolean setIfQueryParamAvailable(Api api){
-        return true;
-    }
 
-    public boolean setIfRequestEnable(Api api){
-        return true;
+    public void setIfRequestEnable(Api api,HttpRequestBase httpRequestBase){
     }
 
 }
