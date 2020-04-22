@@ -6,10 +6,10 @@ public interface ApiManager {
 
     public void sendRequest(Api obj);
 
-    public String getHttpMethod();
+    public String getHttpMethod(Api api);
 
-    public boolean isQueryParamsEnable();
+    public boolean isQueryParamsEnable(Api api);
 
-    public boolean isRequestEnable();
+    public boolean isRequestEnable(Api api);
 
 }

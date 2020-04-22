@@ -13,15 +13,16 @@ public class HttpSession implements ApiManager{
 
     }
 
-    public String getHttpMethod(){
-        return "";
+    public String getHttpMethod(Api api){
+
     }
 
-    public boolean isQueryParamsEnable(){
+    public boolean isQueryParamsEnable(Api api){
         return true;
     }
 
-    public boolean isRequestEnable(){
+    public boolean isRequestEnable(Api api){
         return true;
     }
+
 }
