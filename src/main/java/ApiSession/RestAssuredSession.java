@@ -3,6 +3,7 @@ package ApiSession;
 import io.restassured.RestAssured;
 import io.restassured.specification.RequestSpecification;
 import org.apache.log4j.Logger;
+import org.json.simple.JSONObject;
 
 /**
  * author Love
@@ -17,6 +18,7 @@ public class RestAssuredSession{
         RequestSpecification requestSpecification = RestAssured.given();
         setIfQueryParamAvailable(api,requestSpecification);
         setHttpHeaders(api,requestSpecification);
+        setIfRequestAvailable(api,requestSpecification);
     }
 
     public String getHttpMethod(Api api){
@@ -34,5 +36,10 @@ public class RestAssuredSession{
     }
 
     public void setIfRequestAvailable(Api api,RequestSpecification requestSpecification){
+        JSONObject requestJson = api.getRequestJson();
+        if(!requestJson.isEmpty()){
+            requestSpecification.body(requestJson);
+        }
     }
+
 }
