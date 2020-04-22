@@ -21,7 +21,7 @@ public class RestAssuredSession{
         setIfRequestAvailable(api,requestSpecification);
     }
 
-    public String getHttpMethod(Api api){
+    public String getResponse(Api api){
         return "";
     }
 
