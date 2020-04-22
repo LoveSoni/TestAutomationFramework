@@ -6,7 +6,7 @@ package ApiSession;
 
 import org.apache.log4j.Logger;
 
-public class HttpSession implements ApiManager{
+public class HttpSession {
     private Logger logger = Logger.getLogger(HttpSession.class);
 
     public void sendRequest(Api api){

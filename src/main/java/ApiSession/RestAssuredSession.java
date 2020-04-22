@@ -8,28 +8,31 @@ import org.apache.log4j.Logger;
  * author Love
  */
 
-public class RestAssuredSession implements ApiManager{
+public class RestAssuredSession{
     private Logger logger = Logger.getLogger(RestAssuredSession.class);
 
 
     public void sendRequest(Api api){
         RestAssured.baseURI = api.getUrl();
         RequestSpecification requestSpecification = RestAssured.given();
-        requestSpecification.headers(api.getHeaders());
+        setIfQueryParamAvailable(api,requestSpecification);
+        setHttpHeaders(api,requestSpecification);
     }
-
-
 
     public String getHttpMethod(Api api){
         return "";
     }
 
-    public boolean setIfQueryParamAvailable(Api api){
-        return true;
+    public void setHttpHeaders(Api api,RequestSpecification requestSpecification){
+        requestSpecification.headers(api.getHeaders());
     }
 
-    public boolean setIfRequestEnable(Api api){
-        return true;
+    public void setIfQueryParamAvailable(Api api,RequestSpecification requestSpecification){
+        if(!api.getQueryParams().isEmpty()){
+            requestSpecification.queryParams(api.getQueryParams());
+        }
+    }
+
+    public void setIfRequestAvailable(Api api,RequestSpecification requestSpecification){
     }
 }
-

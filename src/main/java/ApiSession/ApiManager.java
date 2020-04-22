@@ -7,7 +7,7 @@ public interface ApiManager {
 
     public Object getHttpMethod(Api api);
 
-    public boolean setIfQueryParamAvailable(Api api);
+    public boolean setIfQueryParamAvailable(Api api,Object obj);
 
     public boolean setIfRequestEnable(Api api);
 
