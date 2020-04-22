@@ -17,7 +17,8 @@ public class HttpSession {
 
     public void sendRequest(Api api){
         CloseableHttpClient httpClient = HttpClients.createDefault();
-
+        api.setUrl(constructUrlWithQueryParam(api));
+        HttpRequestBase httpRequestBase = getHttpMethod(api);
     }
 
     public String constructUrlWithQueryParam(Api api){
@@ -40,19 +41,20 @@ public class HttpSession {
 
     public HttpRequestBase getHttpMethod(Api api){
         String httpMethod = api.getHttpMethod();
+        String url = api.getUrl();
         HttpRequestBase httpRequestBase = null;
         switch (httpMethod){
             case "GET":
-                httpRequestBase = new HttpGet();
+                httpRequestBase = new HttpGet(url);
                 break;
             case "POST":
-                httpRequestBase = new HttpPost();
+                httpRequestBase = new HttpPost(url);
                 break;
             case "PUT":
-                httpRequestBase = new HttpPut();
+                httpRequestBase = new HttpPut(url);
                 break;
             case "PATCH":
-                httpRequestBase = new HttpPatch();
+                httpRequestBase = new HttpPatch(url);
                 break;
         }
         return httpRequestBase;
