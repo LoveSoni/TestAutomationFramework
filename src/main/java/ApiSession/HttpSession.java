@@ -18,8 +18,8 @@ import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class HttpClient {
-    private Logger logger = Logger.getLogger(HttpClient.class);
+public class HttpSession {
+    private Logger logger = Logger.getLogger(HttpSession.class);
 
     @Test
     public void getRequest(){

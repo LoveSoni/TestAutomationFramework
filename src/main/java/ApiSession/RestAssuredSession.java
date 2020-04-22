@@ -15,8 +15,8 @@ import java.util.Map;
  * author Love
  */
 
-public class RestAssuredClient {
-    private Logger logger = Logger.getLogger(RestAssuredClient.class);
+public class RestAssuredSession {
+    private Logger logger = Logger.getLogger(RestAssuredSession.class);
 
     @Test
     public void getRequest(){
