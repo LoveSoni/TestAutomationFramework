@@ -4,9 +4,13 @@ package ApiSession;
  * author Love
  */
 import org.apache.http.client.methods.*;
+import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.log4j.Logger;
+
+import java.net.URISyntaxException;
+import java.util.Map;
 
 public class HttpSession {
     private Logger logger = Logger.getLogger(HttpSession.class);
@@ -14,6 +18,24 @@ public class HttpSession {
     public void sendRequest(Api api){
         CloseableHttpClient httpClient = HttpClients.createDefault();
 
+    }
+
+    public String constructUrlWithQueryParam(Api api){
+        String url = api.getUrl();
+        Map<String,String> queryParams = api.getQueryParams();
+        if(!queryParams.isEmpty()) {
+            try {
+                URIBuilder uriBuilder = new URIBuilder(url);
+                for (Map.Entry<String,String> map : queryParams.entrySet()) {
+                    uriBuilder.addParameter(map.getKey(), map.getValue());
+                }
+                url = uriBuilder.build().toString();
+            }catch (URISyntaxException exception)
+            {
+                logger.error(exception.getMessage());
+            }
+        }
+        return url;
     }
 
     public HttpRequestBase getHttpMethod(Api api){
