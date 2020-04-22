@@ -1,4 +1,4 @@
 package ApiSession;
 
-public class ApiManager {
+public interface ApiManager {
 }
