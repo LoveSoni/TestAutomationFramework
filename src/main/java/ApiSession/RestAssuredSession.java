@@ -1,23 +1,29 @@
 package ApiSession;
 
-import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
-import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
 import org.apache.log4j.Logger;
-import org.json.simple.JSONObject;
-import org.testng.annotations.Test;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * author Love
  */
 
-public class RestAssuredSession {
+public class RestAssuredSession implements ApiManager{
     private Logger logger = Logger.getLogger(RestAssuredSession.class);
 
 
+    public void sendRequest(Api api){
+
+    }
+
+    public String getHttpMethod(){
+        return "";
+    }
+
+    public boolean isQueryParamsEnable(){
+        return true;
+    }
+
+    public boolean isRequestEnable(){
+        return true;
+    }
 }
 
