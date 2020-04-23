@@ -10,9 +10,9 @@ import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
 import org.apache.log4j.Logger;
 import org.json.simple.JSONObject;
-
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URISyntaxException;
@@ -22,13 +22,14 @@ import java.util.Map;
 public class HttpSession {
     private Logger logger = Logger.getLogger(HttpSession.class);
 
-    public void sendRequest(Api api){
+    public HttpResponse sendRequest(Api api){
         CloseableHttpClient httpClient = HttpClients.createDefault();
         api.setUrl(constructUrlWithQueryParam(api));
         HttpRequestBase httpRequestBase = getHttpMethod(api);
         setHttpHeaders(api,httpRequestBase);
         setIfRequestEnable(api,httpRequestBase);
         HttpResponse httpResponse = getResponse(httpClient,httpRequestBase);
+        return httpResponse;
     }
 
     public HttpResponse getResponse(HttpClient httpClient , HttpRequestBase httpRequestBase){
@@ -38,6 +39,7 @@ public class HttpSession {
         }catch (IOException e){
             logger.error(e.getMessage());
         }
+        return httpResponse;
     }
 
     public String constructUrlWithQueryParam(Api api){
@@ -99,24 +101,4 @@ public class HttpSession {
             ((HttpEntityEnclosingRequestBase) httpRequestBase).setEntity(stringEntity);
         }
     }
-
-    public static void main(String args[]) {
-        Api api = new Api();
-        api.setUrl("https://gorest.co.in");
-        api.setPath("/public-api/users");
-        api.setHttpMethod(Api.HttpMethod.POST);
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("gender","male");
-        jsonObject.put("last_name","lastdfTime");
-        jsonObject.put("first_name","firstdfTime");
-        jsonObject.put("email","timssddffdfd@gmail.com");
-        Map<String,String> map = new HashMap<>();
-        map.put("Authorization","Bearer V32Ni9QvrY9oCVjmFl1u7ALvOwimZTKwAzbo");
-        api.setRequestJson(jsonObject);
-        api.setHeaders(jsonObject);
-        HttpSession httpSession = new HttpSession();
-        httpSession.sendRequest(api);
-
-    }
-
 }
