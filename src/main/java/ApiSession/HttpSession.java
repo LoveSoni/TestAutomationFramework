@@ -3,6 +3,8 @@ package ApiSession;
 /**
  * author Love
  */
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.*;
 import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.entity.StringEntity;
@@ -11,6 +13,7 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.log4j.Logger;
 import org.json.simple.JSONObject;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URISyntaxException;
 import java.util.HashMap;
@@ -25,6 +28,16 @@ public class HttpSession {
         HttpRequestBase httpRequestBase = getHttpMethod(api);
         setHttpHeaders(api,httpRequestBase);
         setIfRequestEnable(api,httpRequestBase);
+        HttpResponse httpResponse = getResponse(httpClient,httpRequestBase);
+    }
+
+    public HttpResponse getResponse(HttpClient httpClient , HttpRequestBase httpRequestBase){
+        HttpResponse httpResponse = null;
+        try {
+            httpResponse = httpClient.execute(httpRequestBase);
+        }catch (IOException e){
+            logger.error(e.getMessage());
+        }
     }
 
     public String constructUrlWithQueryParam(Api api){
@@ -103,6 +116,7 @@ public class HttpSession {
         api.setHeaders(jsonObject);
         HttpSession httpSession = new HttpSession();
         httpSession.sendRequest(api);
+
     }
 
 }
