@@ -21,6 +21,7 @@ public class RestAssuredSession{
         setHttpHeaders(api,requestSpecification);
         setIfRequestAvailable(api,requestSpecification);
         Response response = getResponse(api,requestSpecification);
+        System.out.println(response.body().prettyPrint());
     }
 
     public Response getResponse(Api api,RequestSpecification requestSpecification){
@@ -50,7 +51,7 @@ public class RestAssuredSession{
     }
 
     public void setIfQueryParamAvailable(Api api,RequestSpecification requestSpecification){
-        if(!api.getQueryParams().isEmpty()){
+        if(api.getQueryParams()!=null){
             requestSpecification.queryParams(api.getQueryParams());
         }
     }
