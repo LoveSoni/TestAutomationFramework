@@ -30,6 +30,8 @@ public class Api {
 
     private JSONObject requestJson;
 
+    private String multiPartRequest;
+
     public void setHttpMethod(HttpMethod httpMethod) {
         this.httpMethod = httpMethod.toString();
     }
@@ -76,4 +78,11 @@ public class Api {
         return requestJson;
     }
 
+    public void setMultiPartRequest(String multiPartRequest){
+        this.multiPartRequest = multiPartRequest;
+    }
+
+    public String getMultiPartRequest(){
+        return multiPartRequest;
+    }
 }
