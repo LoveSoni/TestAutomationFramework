@@ -30,7 +30,7 @@ public class Api {
 
     private JSONObject requestJson;
 
-    private String multiPartRequest;
+    private Map<String,String> multiPartRequest;
 
     public void setHttpMethod(HttpMethod httpMethod) {
         this.httpMethod = httpMethod.toString();
@@ -78,11 +78,11 @@ public class Api {
         return requestJson;
     }
 
-    public void setMultiPartRequest(String multiPartRequest){
+    public void setMultiPartRequest(Map<String,String> multiPartRequest){
         this.multiPartRequest = multiPartRequest;
     }
 
-    public String getMultiPartRequest(){
+    public Map<String,String> getMultiPartRequest(){
         return multiPartRequest;
     }
 }
