@@ -3,6 +3,7 @@ package ApiSession;
 /**
  * author Love
  */
+
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.*;
@@ -10,7 +11,10 @@ import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
 import org.apache.log4j.Logger;
+import org.json.simple.JSONObject;
+import utilities.JsonUtility;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URISyntaxException;
@@ -80,22 +84,35 @@ public class HttpSession {
 
     public void setHttpHeaders(Api api,HttpRequestBase httpRequestBase){
         Map<String,String> headers = api.getHeaders();
-        for(Map.Entry<String,String> entry : headers.entrySet()){
-            httpRequestBase.addHeader(entry.getKey(),entry.getValue());
+        if(headers!=null) {
+            for (Map.Entry<String, String> entry : headers.entrySet()) {
+                httpRequestBase.addHeader(entry.getKey(), entry.getValue());
+            }
         }
     }
 
 
     public void setIfRequestEnable(Api api,HttpRequestBase httpRequestBase){
-        String request = api.getRequestJson().toString();
         StringEntity stringEntity = null;
-        if(request!=null) {
+        if( api.getRequestJson()!=null) {
             try {
-                 stringEntity = new StringEntity(request);
+                stringEntity = new StringEntity(api.getRequestJson().toString());
             }catch (UnsupportedEncodingException e){
                 logger.error(e.getMessage());
             }
             ((HttpEntityEnclosingRequestBase) httpRequestBase).setEntity(stringEntity);
         }
     }
+
+    public JSONObject convertResponseToJson(HttpResponse response) {
+        JSONObject responseJson = null;
+        try {
+            String stringResponse =  EntityUtils.toString(response.getEntity());
+            responseJson = JsonUtility.getJsonObjectFromString(stringResponse);
+        }catch (IOException e) {
+            logger.error(e.getMessage());
+        }
+        return responseJson;
+    }
+
 }
