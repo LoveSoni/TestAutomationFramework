@@ -9,6 +9,7 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.*;
 import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.entity.StringEntity;
+import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
@@ -114,5 +115,15 @@ public class HttpSession {
         }
         return responseJson;
     }
+
+    public void getMultiPartRequest(Api api){
+        MultipartEntityBuilder multipartEntityBuilder = MultipartEntityBuilder.create();
+        Map<String,String> keyAndValues = api.getMultiPartRequest();
+        for(Map.Entry<String,String> map : keyAndValues.entrySet()){
+            String key = map.getKey();
+            String value = map.getValue();
+        }
+    }
+
 
 }
