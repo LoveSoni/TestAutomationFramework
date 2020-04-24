@@ -1,7 +1,11 @@
 package ApiSession;
 
+/**
+ * author Love
+ */
 
 import org.json.simple.JSONObject;
+
 import java.util.Map;
 
 public class Api {
@@ -9,6 +13,7 @@ public class Api {
     public enum HttpMethod{
         GET,POST,PUT,PATCH;
     }
+
 
     public Api(){
     }
