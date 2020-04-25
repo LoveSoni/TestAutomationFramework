@@ -16,6 +16,7 @@ import org.apache.http.util.EntityUtils;
 import org.apache.log4j.Logger;
 import org.json.simple.JSONObject;
 import utilities.JsonUtility;
+
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URISyntaxException;
@@ -24,49 +25,48 @@ import java.util.Map;
 public class HttpSession {
     private Logger logger = Logger.getLogger(HttpSession.class);
 
-    public HttpResponse sendRequest(Api api){
+    public HttpResponse sendRequest(Api api) {
         CloseableHttpClient httpClient = HttpClients.createDefault();
         api.setUrl(constructUrlWithQueryParam(api));
         HttpRequestBase httpRequestBase = getHttpMethod(api);
-        setHttpHeaders(api,httpRequestBase);
-        setIfRequestEnable(api,httpRequestBase);
-        HttpResponse httpResponse = getResponse(httpClient,httpRequestBase);
+        setHttpHeaders(api, httpRequestBase);
+        setIfRequestEnable(api, httpRequestBase);
+        HttpResponse httpResponse = getResponse(httpClient, httpRequestBase);
         return httpResponse;
     }
 
-    public HttpResponse getResponse(HttpClient httpClient , HttpRequestBase httpRequestBase){
+    public HttpResponse getResponse(HttpClient httpClient, HttpRequestBase httpRequestBase) {
         HttpResponse httpResponse = null;
         try {
             httpResponse = httpClient.execute(httpRequestBase);
-        }catch (IOException e){
+        } catch (IOException e) {
             logger.error(e.getMessage());
         }
         return httpResponse;
     }
 
-    public String constructUrlWithQueryParam(Api api){
-        String url = api.getUrl()+api.getPath();
-        Map<String,String> queryParams = api.getQueryParams();
-        if(queryParams!=null) {
+    public String constructUrlWithQueryParam(Api api) {
+        String url = api.getUrl() + api.getPath();
+        Map<String, String> queryParams = api.getQueryParams();
+        if (queryParams != null) {
             try {
                 URIBuilder uriBuilder = new URIBuilder(url);
-                for (Map.Entry<String,String> map : queryParams.entrySet()) {
+                for (Map.Entry<String, String> map : queryParams.entrySet()) {
                     uriBuilder.addParameter(map.getKey(), map.getValue());
                 }
                 url = uriBuilder.build().toString();
-            }catch (URISyntaxException exception)
-            {
+            } catch (URISyntaxException exception) {
                 logger.error(exception.getMessage());
             }
         }
         return url;
     }
 
-    public HttpRequestBase getHttpMethod(Api api){
+    public HttpRequestBase getHttpMethod(Api api) {
         String httpMethod = api.getHttpMethod();
         String url = api.getUrl();
         HttpRequestBase httpRequestBase = null;
-        switch (httpMethod){
+        switch (httpMethod) {
             case "GET":
                 httpRequestBase = new HttpGet(url);
                 break;
@@ -83,9 +83,9 @@ public class HttpSession {
         return httpRequestBase;
     }
 
-    public void setHttpHeaders(Api api,HttpRequestBase httpRequestBase){
-        Map<String,String> headers = api.getHeaders();
-        if(headers!=null) {
+    public void setHttpHeaders(Api api, HttpRequestBase httpRequestBase) {
+        Map<String, String> headers = api.getHeaders();
+        if (headers != null) {
             for (Map.Entry<String, String> entry : headers.entrySet()) {
                 httpRequestBase.addHeader(entry.getKey(), entry.getValue());
             }
@@ -93,12 +93,12 @@ public class HttpSession {
     }
 
 
-    public void setIfRequestEnable(Api api,HttpRequestBase httpRequestBase){
+    public void setIfRequestEnable(Api api, HttpRequestBase httpRequestBase) {
         StringEntity stringEntity = null;
-        if( api.getRequestJson()!=null) {
+        if (api.getRequestJson() != null) {
             try {
                 stringEntity = new StringEntity(api.getRequestJson().toString());
-            }catch (UnsupportedEncodingException e){
+            } catch (UnsupportedEncodingException e) {
                 logger.error(e.getMessage());
             }
             ((HttpEntityEnclosingRequestBase) httpRequestBase).setEntity(stringEntity);
@@ -108,18 +108,18 @@ public class HttpSession {
     public JSONObject convertResponseToJson(HttpResponse response) {
         JSONObject responseJson = null;
         try {
-            String stringResponse =  EntityUtils.toString(response.getEntity());
+            String stringResponse = EntityUtils.toString(response.getEntity());
             responseJson = JsonUtility.getJsonObjectFromString(stringResponse);
-        }catch (IOException e) {
+        } catch (IOException e) {
             logger.error(e.getMessage());
         }
         return responseJson;
     }
 
-    public void getMultiPartRequest(Api api){
+    public void getMultiPartRequest(Api api) {
         MultipartEntityBuilder multipartEntityBuilder = MultipartEntityBuilder.create();
-        Map<String,String> keyAndValues = api.getMultiPartRequest();
-        for(Map.Entry<String,String> map : keyAndValues.entrySet()){
+        Map<String, String> keyAndValues = api.getMultiPartRequest();
+        for (Map.Entry<String, String> map : keyAndValues.entrySet()) {
             String key = map.getKey();
             String value = map.getValue();
         }
