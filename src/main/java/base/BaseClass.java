@@ -17,14 +17,14 @@ public class BaseClass {
     private Logger logger = Logger.getLogger(BaseClass.class);
 
     @BeforeMethod
-    public void setUpTest(){
+    public void setUpTest() {
         initializeSession();
         sessionManager.startSession();
         sessionManager.initiateDriver();
     }
 
     @AfterMethod
-    public void closeSession(){
+    public void closeSession() {
         sessionManager.stopSession();
 
     }
