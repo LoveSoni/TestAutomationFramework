@@ -10,12 +10,12 @@ import java.util.Map;
 
 public class Api {
 
-    public enum HttpMethod{
-        GET,POST,PUT,PATCH;
+    public enum HttpMethod {
+        GET, POST, PUT, PATCH;
     }
 
 
-    public Api(){
+    public Api() {
     }
 
     private String httpMethod;
@@ -30,7 +30,7 @@ public class Api {
 
     private JSONObject requestJson;
 
-    private Map<String,String> multiPartRequest;
+    private Map<String, String> multiPartRequest;
 
     public void setHttpMethod(HttpMethod httpMethod) {
         this.httpMethod = httpMethod.toString();
@@ -68,7 +68,9 @@ public class Api {
         this.headers = headers;
     }
 
-    public Map<String, String> getHeaders() { return headers; }
+    public Map<String, String> getHeaders() {
+        return headers;
+    }
 
     public void setRequestJson(JSONObject requestJson) {
         this.requestJson = requestJson;
@@ -78,11 +80,11 @@ public class Api {
         return requestJson;
     }
 
-    public void setMultiPartRequest(Map<String,String> multiPartRequest){
+    public void setMultiPartRequest(Map<String, String> multiPartRequest) {
         this.multiPartRequest = multiPartRequest;
     }
 
-    public Map<String,String> getMultiPartRequest(){
+    public Map<String, String> getMultiPartRequest() {
         return multiPartRequest;
     }
 }
