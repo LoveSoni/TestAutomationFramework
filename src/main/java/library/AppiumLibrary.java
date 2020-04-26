@@ -45,23 +45,24 @@ public class AppiumLibrary {
     }
 
     public void enterText(String element, String text) {
-        isElementPresent(element,DEFAULT_TIME_OUT);
+        isElementPresent(element, DEFAULT_TIME_OUT);
         MobileElement mobileElement = getElememnt(element);
         click(mobileElement);
         mobileElement.sendKeys(text);
     }
 
-    public int getScreenHeight(){
+    public int getScreenHeight() {
         return driver.manage().window().getSize().getHeight();
     }
 
-    public int getScreenWidth(){
+    public int getScreenWidth() {
         return driver.manage().window().getSize().getWidth();
     }
 
 
     public boolean isElementPresent(String element, int time) {
-        boolean found = false;;
+        boolean found = false;
+        ;
         try {
             WebDriverWait webDriverWait = new WebDriverWait(driver, time);
             webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(elementLocator.locateElement(element)));
@@ -72,48 +73,48 @@ public class AppiumLibrary {
         return found;
     }
 
-    public boolean areElementPresent(String element, int time){
+    public boolean areElementPresent(String element, int time) {
         boolean found = false;
-        try{
-            WebDriverWait webDriverWait = new WebDriverWait(driver,time);
+        try {
+            WebDriverWait webDriverWait = new WebDriverWait(driver, time);
             webDriverWait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(elementLocator.locateElement(element)));
             found = true;
-        }catch (TimeoutException t){
-            logger.error("Element - "+element+" Not present ");
+        } catch (TimeoutException t) {
+            logger.error("Element - " + element + " Not present ");
         }
         return found;
     }
 
-    public String getText(String element){
-        isElementPresent(element,DEFAULT_TIME_OUT);
+    public String getText(String element) {
+        isElementPresent(element, DEFAULT_TIME_OUT);
         MobileElement mobileElement = getElememnt(element);
         String text = mobileElement.getText();
         return text;
     }
 
-    public String getTextAttribute(String element){
-        isElementPresent(element,DEFAULT_TIME_OUT);
+    public String getTextAttribute(String element) {
+        isElementPresent(element, DEFAULT_TIME_OUT);
         MobileElement mobileElement = getElememnt(element);
         String text = mobileElement.getAttribute("text");
         return text;
     }
 
-    public String getAttributeValue(String element, String attribute){
-        isElementPresent(element,DEFAULT_TIME_OUT);
+    public String getAttributeValue(String element, String attribute) {
+        isElementPresent(element, DEFAULT_TIME_OUT);
         MobileElement mobileElement = getElememnt(element);
         String text = mobileElement.getAttribute(attribute);
         return text;
     }
 
-    public void closeKeyboard(){
+    public void closeKeyboard() {
         driver.hideKeyboard();
     }
 
-    public void removeApp(String bundleId){
+    public void removeApp(String bundleId) {
         driver.removeApp(bundleId);
     }
 
-    public void closeApp(){
+    public void closeApp() {
         driver.closeApp();
     }
 
