@@ -10,16 +10,15 @@ import org.testng.Assert;
 
 public class ElementLocator {
 
-    public By locateElement(String query){
-        String locator[] = query.split("_",2);
+    public By locateElement(String query) {
+        String locator[] = query.split("_", 2);
         String locatorType = locator[0];
         String locatorValue = locator[1];
         By by = null;
-        switch (locatorType)
-        {
+        switch (locatorType) {
             case "ID":
-            by = MobileBy.id(locatorValue);
-            break;
+                by = MobileBy.id(locatorValue);
+                break;
             case "XP":
                 by = MobileBy.xpath(locatorValue);
                 break;
