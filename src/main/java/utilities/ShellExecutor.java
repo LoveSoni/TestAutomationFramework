@@ -2,16 +2,17 @@ package utilities;
 
 import constants.Constants;
 import org.apache.log4j.Logger;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Properties;
 
 public class ShellExecutor {
-    private Logger logger = Logger.getLogger(ShellExecutor.class);
+    private static Logger logger = Logger.getLogger(ShellExecutor.class);
     private static Properties commandProperties = PropertyReader.readProperty(Constants.SHELL_COMMAND_PROPERTIES_PATH);
 
-    public static StringBuilder executeCommand(String command) {
+    public static String executeCommand(String command) {
         StringBuilder output = new StringBuilder();
         try {
             Process process = Runtime.getRuntime().exec(command);
@@ -23,11 +24,15 @@ public class ShellExecutor {
         } catch (IOException e) {
 
         }
-        return output;
+        return output.toString();
     }
 
-    public static void getListOfConnectedDevices() {
-        executeCommand(commandProperties.getProperty("devicesList"));
+    public static String getListOfConnectedDevices() {
+        String output = executeCommand(commandProperties.getProperty("devicesList"));
+        String deviceUdidDetails = output.split("\n")[1];
+        String udid = deviceUdidDetails.split("\t")[0];
+        return udid;
     }
+
 
 }
