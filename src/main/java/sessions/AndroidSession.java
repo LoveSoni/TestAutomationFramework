@@ -24,39 +24,38 @@ public class AndroidSession implements SessionManager {
 
 
     @Override
-    public void startSession(){
+    public void startSession() {
         appiumDriverLocalService = startAppiumServer();
         logger.info("Appium Server Started Successfully");
     }
 
-    public synchronized void initiateDriver(){
+    public synchronized void initiateDriver() {
 
         try {
             appiumDriver = new AndroidDriver(new URL(getUrl()), clientCapabilities());
-        }catch (MalformedURLException e){
+        } catch (MalformedURLException e) {
             logger.error(e.getMessage());
         }
     }
 
-    public DesiredCapabilities clientCapabilities(){
+    public DesiredCapabilities clientCapabilities() {
         String ANDROID_CAPABILITIES_PATH = Constants.ANDROID_CAPABILITIES_PATH;
-        Map<String,String> androidProperties = PropertyReader.getAllKeysAndValues(ANDROID_CAPABILITIES_PATH);
+        Map<String, String> androidProperties = PropertyReader.getAllKeysAndValues(ANDROID_CAPABILITIES_PATH);
         DesiredCapabilities desiredCapabilities = MobileSessionUtility.setCapability(androidProperties);
         return desiredCapabilities;
     }
 
     @Override
-    public AppiumDriver getDriver()
-    {
+    public AppiumDriver getDriver() {
         return this.appiumDriver;
     }
 
-    public String getUrl(){
+    public String getUrl() {
         return appiumDriverLocalService.getUrl().toString();
     }
 
     @Override
-    public void stopSession(){
+    public void stopSession() {
         logger.info("Appium Server is getting closed");
         appiumDriverLocalService.stop();
     }
