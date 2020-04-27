@@ -49,7 +49,7 @@ public class WebSession {
         return this.driver;
     }
 
-    public void quitDriver() {
+    public void quitBrowser() {
         this.driver.quit();
     }
 }
