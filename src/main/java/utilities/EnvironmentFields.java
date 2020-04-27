@@ -15,6 +15,8 @@ public class EnvironmentFields {
 
     private static String platformOs = System.getProperty("platformOs");
 
+    private static String browserName = System.getProperty("user.dir");
+
     public static  String getPlatformOs(){
         return platformOs == null ? getDefaultPlatformOs() : platformOs;
     }
@@ -22,6 +24,10 @@ public class EnvironmentFields {
     public static String getDefaultPlatformOs(){
         return defaultEnvironmentProperties.getProperty("platformOs");
     }
+
+    public static String getBrowserName(){ return browserName == null ? getDefaultBrowserName() : browserName; }
+
+    public static String getDefaultBrowserName(){ return defaultEnvironmentProperties.getProperty("browserName"); }
 
     public static String getTestEnvironment(){
         return testEnvironment == null ?  getDefaultTestEnv() :testEnvironment;
