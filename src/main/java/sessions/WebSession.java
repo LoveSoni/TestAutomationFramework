@@ -3,6 +3,7 @@ package sessions;
 /**
  * author Love
  */
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -16,13 +17,13 @@ public class WebSession {
     private Logger logger = Logger.getLogger(WebSession.class);
     private String browserName = EnvironmentFields.getBrowserName();
 
-    public void initiateDriver(){
-        logger.info("Running Test on "+browserName+" Browser");
+    public void initiateDriver() {
+        logger.info("Running Test on " + browserName + " Browser");
         setUpBrowser();
     }
 
-    public void setUpBrowser(){
-        switch (browserName.toLowerCase()){
+    public void setUpBrowser() {
+        switch (browserName.toLowerCase()) {
             case "chrome":
                 WebDriverManager.chromiumdriver().setup();
                 driver = new ChromeDriver();
@@ -39,7 +40,7 @@ public class WebSession {
         }
     }
 
-    public WebDriver getDriver(){
+    public WebDriver getDriver() {
         return this.driver;
     }
 
