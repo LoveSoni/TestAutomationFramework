@@ -15,7 +15,7 @@ public class EnvironmentFields {
 
     private static String platformOs = System.getProperty("platformOs");
 
-    private static String browserName = System.getProperty("user.dir");
+    private static String browserName = System.getProperty("browserName");
 
     public static  String getPlatformOs(){
         return platformOs == null ? getDefaultPlatformOs() : platformOs;
