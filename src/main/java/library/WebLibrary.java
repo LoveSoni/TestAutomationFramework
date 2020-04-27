@@ -1,5 +1,9 @@
 package library;
 
+/**
+ * author Love
+ */
+
 import org.openqa.selenium.WebDriver;
 import sessions.WebSession;
 
@@ -9,4 +13,5 @@ public class WebLibrary {
     public WebLibrary(WebSession webSession){
         driver = webSession.getDriver();
     }
+
 }

@@ -13,7 +13,6 @@ import org.json.simple.JSONObject;
 public class RestAssuredSession{
     private Logger logger = Logger.getLogger(RestAssuredSession.class);
 
-
     public void sendRequest(Api api){
         RestAssured.baseURI = api.getUrl();
         RequestSpecification requestSpecification = RestAssured.given();
