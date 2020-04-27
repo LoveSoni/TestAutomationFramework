@@ -3,7 +3,6 @@ package sessions;
 /**
  * author Love
  */
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -19,6 +18,7 @@ public class WebSession {
 
     public void initiateDriver() {
         setUpBrowser();
+        maximizeBrowser();
     }
 
     public void setUpBrowser() {
@@ -40,12 +40,21 @@ public class WebSession {
         }
     }
 
+    public void maximizeBrowser(){
+        this.driver.manage().window().maximize();
+    }
+
     public WebDriver getDriver() {
         return this.driver;
+    }
+
+    public void quitDriver(){
+        this.driver.quit();
     }
 
     public static void main(String args[]){
         WebSession webSession = new WebSession();
         webSession.initiateDriver();
+      //  webSession.quitDriver();
     }
 }
