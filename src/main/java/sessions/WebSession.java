@@ -18,11 +18,11 @@ public class WebSession {
     private String browserName = EnvironmentFields.getBrowserName();
 
     public void initiateDriver() {
-        logger.info("Running Test on " + browserName + " Browser");
         setUpBrowser();
     }
 
     public void setUpBrowser() {
+        logger.info("Running Test on " + browserName + " Browser");
         switch (browserName.toLowerCase()) {
             case "chrome":
                 WebDriverManager.chromiumdriver().setup();
@@ -44,5 +44,8 @@ public class WebSession {
         return this.driver;
     }
 
-
+    public static void main(String args[]){
+        WebSession webSession = new WebSession();
+        webSession.initiateDriver();
+    }
 }
