@@ -1,18 +1,20 @@
 package sessions;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
-
 /**
  * author Love
  */
-public class WebSession{
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import utilities.EnvironmentFields;
+
+public class WebSession {
     private WebDriver driver;
     private WebDriverManager webDriverManager;
+    private String browserName = EnvironmentFields.getBrowserName();
 
     public void initiateDriver(){
+
         WebDriverManager.chromiumdriver().setup();
         driver = new ChromeDriver();
     }
@@ -21,15 +23,5 @@ public class WebSession{
         return this.driver;
     }
 
-//    public DesiredCapabilities clientCapabilities(){
-//
-//    }
 
-    public void startSession(){
-
-    }
-
-    public void stopSession(){
-
-    }
 }
