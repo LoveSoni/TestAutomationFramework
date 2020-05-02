@@ -13,6 +13,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import sessions.SessionManager;
 
+import java.util.*;
+
 public class AppiumLibrary {
     private AppiumDriver driver;
     private Logger logger = Logger.getLogger(AppiumLibrary.class);

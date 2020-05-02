@@ -30,7 +30,6 @@ public class AndroidSession implements SessionManager {
     }
 
     public synchronized void initiateDriver() {
-
         try {
             appiumDriver = new AndroidDriver(new URL(getUrl()), clientCapabilities());
         } catch (MalformedURLException e) {
