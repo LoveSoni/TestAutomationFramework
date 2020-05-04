@@ -14,6 +14,8 @@ public class Constants {
 
     public static String slash = File.separator;
 
+    public static String REPORTS_DIRECTORY_PATH = PROJECT_PATH + slash + "reports";
+
     public static String SRC_DIRECTORY_PATH = PROJECT_PATH + slash + "src";
 
     public static String MAIN_DIRECTORY_PATH = SRC_DIRECTORY_PATH + slash + "main";
@@ -43,4 +45,6 @@ public class Constants {
     public static String APPIUM_SERVER_LOG_LEVEL = "warn";
 
     public static int ELEMENT_EXPLICIT_WAIT = 15;
+
+    public static String EXTENT_REPORT_PATH = REPORTS_DIRECTORY_PATH + slash + "extentReport.html";
 }
