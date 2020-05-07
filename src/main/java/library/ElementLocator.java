@@ -48,5 +48,5 @@ public class ElementLocator {
         }
         return by;
     }
-
 }
+
