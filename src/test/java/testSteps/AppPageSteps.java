@@ -10,59 +10,59 @@ public class AppPageSteps {
     private AppiumLibrary appiumLibrary;
     private Properties appPageOptions = PropertyReader.readLocatorProperties("appOptionScreen.properties");
 
-    public AppPageSteps(SessionManager sessionManager){
+    public AppPageSteps(SessionManager sessionManager) {
         appiumLibrary = new AppiumLibrary(sessionManager);
     }
 
-    public void selectActionBar(){
+    public void selectActionBar() {
         appiumLibrary.click(appPageOptions.getProperty("actionBar"));
     }
 
-    public void selectAcitivity(){
+    public void selectAcitivity() {
         appiumLibrary.click(appPageOptions.getProperty("activity"));
     }
 
-    public void selectAlertDialog(){
+    public void selectAlertDialog() {
         appiumLibrary.click(appPageOptions.getProperty("alertDialogs"));
     }
 
-    public void selectDeviceAdmin(){
+    public void selectDeviceAdmin() {
         appiumLibrary.click(appPageOptions.getProperty("deviceAdmin"));
     }
 
-    public void selectFragment(){
+    public void selectFragment() {
         appiumLibrary.click(appPageOptions.getProperty("fragment"));
     }
 
-    public void selectLanucherShortcuts(){
+    public void selectLanucherShortcuts() {
         appiumLibrary.click(appPageOptions.getProperty("launcherShortcuts"));
     }
 
-    public void selectLoader(){
+    public void selectLoader() {
         appiumLibrary.click(appPageOptions.getProperty("loader"));
     }
 
-    public void selectMenu(){
+    public void selectMenu() {
         appiumLibrary.click(appPageOptions.getProperty("menu"));
     }
 
-    public void selectNotifications(){
+    public void selectNotifications() {
         appiumLibrary.click(appPageOptions.getProperty("notifications"));
     }
 
-    public void selectSearch(){
+    public void selectSearch() {
         appiumLibrary.click(appPageOptions.getProperty("search"));
     }
 
-    public void selectService(){
+    public void selectService() {
         appiumLibrary.click(appPageOptions.getProperty("service"));
     }
 
-    public void selectTextToSpeech(){
+    public void selectTextToSpeech() {
         appiumLibrary.click(appPageOptions.getProperty("textToSpeech"));
     }
 
-    public void selectVoiceRecognition(){
+    public void selectVoiceRecognition() {
         appiumLibrary.click(appPageOptions.getProperty("voiceRecognition"));
     }
 }
