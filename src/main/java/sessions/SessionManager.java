@@ -45,6 +45,7 @@ public interface SessionManager {
         appiumServiceBuilder.withArgument(GeneralServerFlag.LOG_LEVEL,Constants.APPIUM_SERVER_LOG_LEVEL);
         appiumServiceBuilder.withArgument(GeneralServerFlag.RELAXED_SECURITY);
         appiumServiceBuilder.withLogFile(new File(Constants.APPIUM_SERVER_LOGS_PATH));
+        appiumServiceBuilder.withArgument(GeneralServerFlag.LOCAL_TIMEZONE);
         appiumServiceBuilder.withIPAddress(inetAddress.getHostAddress());
         appiumServiceBuilder.withCapabilities(serverCapability());
         appiumDriverLocalService = AppiumDriverLocalService.buildService(appiumServiceBuilder);
