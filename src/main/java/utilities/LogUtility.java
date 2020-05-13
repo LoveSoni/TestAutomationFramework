@@ -9,19 +9,19 @@ public class LogUtility {
         logger = Logger.getLogger(clasName);
     }
 
-    public void logInfo(String infoMsg){
+    public void logInfo(String infoMsg) {
         logger.info(infoMsg);
     }
 
-    public void logWarn(String warnMsg){
+    public void logWarn(String warnMsg) {
         logger.warn(warnMsg);
     }
 
-    public void logError(String errorMsg){
+    public void logError(String errorMsg) {
         logger.error(errorMsg);
     }
 
-    public void logDebug(String debugMsg){
+    public void logDebug(String debugMsg) {
         logger.debug(debugMsg);
     }
 
