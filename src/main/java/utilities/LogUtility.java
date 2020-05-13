@@ -1,5 +1,9 @@
 package utilities;
 
+/**
+ * author Love
+ */
+
 import org.apache.log4j.Logger;
 
 public class LogUtility {
