@@ -12,6 +12,8 @@ import io.appium.java_client.service.local.flags.GeneralServerFlag;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import utilities.MobileSessionUtility;
 import utilities.PropertyReader;
+
+import java.io.File;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.*;
@@ -42,6 +44,7 @@ public interface SessionManager {
         appiumServiceBuilder.usingAnyFreePort();
         appiumServiceBuilder.withArgument(GeneralServerFlag.LOG_LEVEL,Constants.APPIUM_SERVER_LOG_LEVEL);
         appiumServiceBuilder.withArgument(GeneralServerFlag.RELAXED_SECURITY);
+        appiumServiceBuilder.withLogFile(new File(Constants.APPIUM_SERVER_LOGS_PATH));
         appiumServiceBuilder.withIPAddress(inetAddress.getHostAddress());
         appiumServiceBuilder.withCapabilities(serverCapability());
         appiumDriverLocalService = AppiumDriverLocalService.buildService(appiumServiceBuilder);
