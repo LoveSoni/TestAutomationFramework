@@ -13,5 +13,9 @@ public class LogUtility {
         logger.info(logMsg);
     }
 
+    public void logWarn(String logMsg){
+        logger.warn(logMsg);
+    }
+
 
 }
