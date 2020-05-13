@@ -9,5 +9,9 @@ public class LogUtility {
         logger = Logger.getLogger(clasName);
     }
 
+    public void logInfo(String logMsg){
+        logger.info(logMsg);
+    }
+
 
 }
