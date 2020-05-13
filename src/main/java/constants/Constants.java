@@ -40,9 +40,15 @@ public class Constants {
 
     public static String SHELL_COMMAND_DIRECTORY_PATH = RESOURCE_DIRECTORY_PATH + slash + "shellCommands";
 
+    public static String LOGS_DIRECTORY_PATH = PROJECT_PATH + slash + "logs";
+
+    public static String SERVER_LOGS_PATH = LOGS_DIRECTORY_PATH + slash + "server";
+
+    public static String APPIUM_SERVER_LOGS_PATH = SERVER_LOGS_PATH + slash + "appiumServerLog.txt";
+
     public static String SHELL_COMMAND_PROPERTIES_PATH = SHELL_COMMAND_DIRECTORY_PATH + slash + EnvironmentFields.getPlatformOs() + "Command.properties";
 
-    public static String APPIUM_SERVER_LOG_LEVEL = "warn";
+    public static String APPIUM_SERVER_LOG_LEVEL = "info";
 
     public static int ELEMENT_EXPLICIT_WAIT = 15;
 
