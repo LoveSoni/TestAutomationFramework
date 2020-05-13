@@ -21,6 +21,8 @@ public class LogUtility {
         logger.error(errorMsg);
     }
 
-
+    public void logDebug(String debugMsg){
+        logger.debug(debugMsg);
+    }
 
 }
