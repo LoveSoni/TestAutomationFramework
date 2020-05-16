@@ -6,13 +6,14 @@ import org.junit.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import testFlows.SearchFlow;
+import utilities.LogUtility;
 
 public class SearchTest extends BaseClass {
     /**
      * This class should contains all the assertions
      */
     private SearchFlow searchFlow;
-    private Logger logger = Logger.getLogger(SearchTest.class);
+   private LogUtility logger = new LogUtility(SearchTest.class);
 
     @BeforeMethod
     public void intialize() {
@@ -22,7 +23,7 @@ public class SearchTest extends BaseClass {
     @Test
     public void verifyUserIsOnInvokeSearchScreen() {
         searchFlow.selectInvokeSearch();
-        logger.info("Verify User is on Invoke Search Screen or not");
+        logger.logInfo("Verify User is on Invoke Search Screen or not");
         Assert.assertTrue(searchFlow.isSearchRequestedDisplay());
     }
 
@@ -31,10 +32,10 @@ public class SearchTest extends BaseClass {
         String prefilQuery = "test1";
         String appData = "test2";
         searchFlow.selectInvokeSearch();
-        logger.info("Validate the search text");
+        logger.logInfo("Validate the search text");
         searchFlow.enterPrefilQueryAndAppData(prefilQuery, appData);
         String actualResult = searchFlow.clickOnRequestedAndGetSearchText();
-        logger.info("Now verify that search text and prefill text should be same");
+        logger.logInfo("Now verify that search text and prefill text should be same");
         Assert.assertEquals(actualResult, prefilQuery); // prefilQuery is the expected result
     }
 
@@ -43,9 +44,9 @@ public class SearchTest extends BaseClass {
     public void verifyUserIsOnQuerySearchResult() {
         searchFlow.selectQuerySearchResult();
         String expectedResult = "App/Search/Query Search Results";
-        logger.info("Expected Query Search Title -" + expectedResult);
+        logger.logInfo("Expected Query Search Title -" + expectedResult);
         String actualResult = searchFlow.fetchQueryTitle();
-        logger.info("Actual Query Search Title -" + actualResult);
+        logger.logInfo("Actual Query Search Title -" + actualResult);
         Assert.assertEquals(expectedResult, actualResult);
     }
 
