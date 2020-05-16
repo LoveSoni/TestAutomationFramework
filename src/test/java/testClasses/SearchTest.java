@@ -13,7 +13,7 @@ public class SearchTest extends BaseClass {
      * This class should contains all the assertions
      */
     private SearchFlow searchFlow;
-   private LogUtility logger = new LogUtility(SearchTest.class);
+    private LogUtility logger = new LogUtility(SearchTest.class);
 
     @BeforeMethod
     public void intialize() {
