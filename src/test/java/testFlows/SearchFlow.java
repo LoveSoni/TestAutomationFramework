@@ -1,5 +1,9 @@
 package testFlows;
 
+/**
+ * author Love
+ */
+
 import io.appium.java_client.MobileElement;
 import org.apache.log4j.Logger;
 import sessions.SessionManager;
