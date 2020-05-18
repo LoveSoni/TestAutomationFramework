@@ -1,7 +1,10 @@
 package testClasses;
 
+/**
+ * author Love
+ */
+
 import base.BaseClass;
-import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
