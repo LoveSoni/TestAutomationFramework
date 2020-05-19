@@ -1,5 +1,6 @@
 package testClasses;
 
+import org.apache.log4j.Logger;
 import org.testng.ISuite;
 import org.testng.ISuiteListener;
 import org.testng.ITestNGMethod;
@@ -17,6 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 public class DynamicTestngGenerator implements ISuiteListener {
+    private static Logger logger = Logger.getLogger(DynamicTestngGenerator.class);
     @Override
     public void onStart(ISuite suite) {
         System.out.print("in the onstart method");
@@ -60,7 +62,7 @@ public class DynamicTestngGenerator implements ISuiteListener {
             writer.write(xmlSuite.toXml());
             writer.flush();
             writer.close();
-            System.out.println(new File("TestngDyn.xml").getAbsolutePath());
+            logger.info(new File("TestngDyn.xml").getAbsolutePath());
         } catch (IOException e) {
 
             e.printStackTrace();
