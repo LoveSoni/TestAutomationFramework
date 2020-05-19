@@ -56,11 +56,11 @@ public class DynamicTestngGenerator implements ISuiteListener {
 
         FileWriter writer;
         try {
-            writer = new FileWriter(new File("myVirtual.xml"));
+            writer = new FileWriter(new File("TestngDyn.xml"));
             writer.write(xmlSuite.toXml());
             writer.flush();
             writer.close();
-            System.out.println(new File("myVirtual.xml").getAbsolutePath());
+            System.out.println(new File("TestngDyn.xml").getAbsolutePath());
         } catch (IOException e) {
 
             e.printStackTrace();
