@@ -54,35 +54,16 @@ public class DynamicTestngGenerator implements ISuiteListener {
 //        testNG.setXmlSuites(xmlSuites);
 //        testNG.run();
 
-
-        XmlSuite xmlSuite = new XmlSuite();
-        xmlSuite.setName("Dynamic Suite");
-        xmlSuite.setParallel(XmlSuite.ParallelMode.TESTS);
-        xmlSuite.addListener("tests.DynamicTestgnGenerator");
-        xmlSuite.setThreadCount(2);
-        XmlTest xmlTest = new XmlTest(xmlSuite);
-        xmlTest.setName("login test");
-        xmlTest.setParameters(new HashMap<String,String>(){
-            {
-                put("udid","emulator-5554");
-            }
-        });
-
-        XmlClass xmlClass = new XmlClass();
-        xmlClass.setClass(SearchTest.class);
-
-        List<XmlClass> xmlClasses = new ArrayList<>();
-        xmlClasses.add(xmlClass);
-
-        xmlTest.setClasses(xmlClasses);
-
-        TestNG testNG = new TestNG();
-        testNG.setXmlSuites(new ArrayList<XmlSuite>(){
-            {
-                add(xmlSuite);
-            }
-        });
-        testNG.run();
-
+//        FileWriter writer;
+//        try {
+//            writer = new FileWriter(new File("myVirtual.xml"));
+//            writer.write(xmlSuite.toXml());
+//            writer.flush();
+//            writer.close();
+//            System.out.println(new File("myVirtual.xml").getAbsolutePath());
+//        } catch (IOException e) {
+//
+//            e.printStackTrace();
+//        }
     }
 }
