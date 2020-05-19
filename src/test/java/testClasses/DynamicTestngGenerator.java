@@ -18,16 +18,16 @@ import java.util.Map;
 
 public class DynamicTestngGenerator implements ISuiteListener {
     @Override
-    public void onStart(ISuite suite){
+    public void onStart(ISuite suite) {
         System.out.print("in the onstart method");
         List<ITestNGMethod> list = suite.getAllMethods();
         System.out.println(list.size());
-        for (ITestNGMethod li : list){
+        for (ITestNGMethod li : list) {
             System.out.println(li.getMethodName());
         }
     }
 
-    public static void main(String args[]){
+    public static void main(String args[]) {
         XmlSuite xmlSuite = new XmlSuite();
         xmlSuite.setName("dynamic suite");
         xmlSuite.setParallel(XmlSuite.ParallelMode.TESTS);
@@ -35,8 +35,8 @@ public class DynamicTestngGenerator implements ISuiteListener {
 
         XmlTest xmlTest = new XmlTest(xmlSuite);
         xmlTest.setName("parallel test");
-        Map<String,String> parameters = new HashMap<>();
-        parameters.put("udid","emulator-5554");
+        Map<String, String> parameters = new HashMap<>();
+        parameters.put("udid", "emulator-5554");
         xmlTest.setParameters(parameters);
 
         List<XmlClass> xmlClasses = new ArrayList<>();
