@@ -68,4 +68,12 @@ public class DynamicTestngGenerator implements ISuiteListener {
             e.printStackTrace();
         }
     }
+
+    public XmlSuite getXmlSuite(int noOfDevices){
+        XmlSuite xmlSuite = new XmlSuite();
+        xmlSuite.setName("Dynamic Suite");
+        xmlSuite.setParallel(XmlSuite.ParallelMode.TESTS);
+        xmlSuite.setThreadCount(noOfDevices);
+        return xmlSuite;
+    }
 }
