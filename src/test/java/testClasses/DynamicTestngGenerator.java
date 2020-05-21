@@ -69,7 +69,7 @@ public class DynamicTestngGenerator implements ISuiteListener {
         }
     }
 
-    public XmlSuite getXmlSuite(int noOfDevices){
+    public XmlSuite prepareXmlSuite(int noOfDevices){
         XmlSuite xmlSuite = new XmlSuite();
         xmlSuite.setName("Dynamic Suite");
         xmlSuite.setParallel(XmlSuite.ParallelMode.TESTS);
