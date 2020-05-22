@@ -1,5 +1,6 @@
 package listeners;
 
+import org.apache.log4j.Logger;
 import org.testng.TestNG;
 import org.testng.annotations.Test;
 import org.testng.xml.XmlSuite;
@@ -10,25 +11,27 @@ import java.util.HashMap;
 import java.util.List;
 
 public class TestngGenerator {
-    private List<String> udidList =ShellExecutor.getListOfConnectedDevices();
+    private String testsName = System.getProperty("user.dir");
+    private List<String> udidList = ShellExecutor.getListOfConnectedDevices();
     private int numberOfDeviceConnected = udidList.size();
+    private Logger logger = Logger.getLogger(TestngGenerator.class);
 
     @Test
-    public void generateTestng(){
+    public void generateTestng() {
         XmlSuite xmlSuite = prepareXmlSuite();
-        udidList.forEach(udid ->{
-                    prepareXmlTest(xmlSuite,udid);
-                }
-                );
+        udidList.forEach(udid ->
+                prepareXmlTest(xmlSuite, udid)
+        );
+        logger.info("Xml Suite Prepared - \n" + xmlSuite.toXml());
     }
 
-    public void runTestngTests(List<XmlSuite> xmlSuite){
+    public void runTestngTests(List<XmlSuite> xmlSuite) {
         TestNG testNG = new TestNG();
         testNG.setXmlSuites(xmlSuite);
         testNG.run();
     }
 
-    public XmlSuite prepareXmlSuite(){
+    public XmlSuite prepareXmlSuite() {
         XmlSuite xmlSuite = new XmlSuite();
         xmlSuite.setName("Dynamic Suite");
         xmlSuite.setParallel(XmlSuite.ParallelMode.TESTS);
@@ -36,11 +39,11 @@ public class TestngGenerator {
         return xmlSuite;
     }
 
-    public XmlTest prepareXmlTest(XmlSuite xmlSuite, String udid){
+    public XmlTest prepareXmlTest(XmlSuite xmlSuite, String udid) {
         XmlTest xmlTest = new XmlTest(xmlSuite);
-        xmlTest.setParameters(new HashMap<String,String>(){
+        xmlTest.setParameters(new HashMap<String, String>() {
             {
-                put("udid",udid);
+                put("udid", udid);
             }
         });
         return xmlTest;
