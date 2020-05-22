@@ -6,6 +6,8 @@ import org.apache.log4j.Logger;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 public class ShellExecutor {
@@ -27,11 +29,14 @@ public class ShellExecutor {
         return output.toString();
     }
 
-    public static String getListOfConnectedDevices() {
+    public static List<String> getListOfConnectedDevices() {
         String output = executeCommand(commandProperties.getProperty("devicesList"));
-        String deviceUdidDetails = output.split("\n")[1];
-        String udid = deviceUdidDetails.split("\t")[0];
-        return udid;
+        String list[] = output.split("\n");
+        List<String> udidList = new ArrayList<>();
+        for(int i=1;i<list.length;i++){
+            udidList.add(list[i].split("\t")[0]);
+        }
+        return udidList;
     }
 
 
