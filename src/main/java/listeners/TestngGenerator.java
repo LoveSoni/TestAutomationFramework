@@ -1,5 +1,6 @@
 package listeners;
 
+import org.testng.TestNG;
 import org.testng.annotations.Test;
 import org.testng.xml.XmlSuite;
 import org.testng.xml.XmlTest;
@@ -15,6 +16,16 @@ public class TestngGenerator {
     @Test
     public void generateTestng(){
         XmlSuite xmlSuite = prepareXmlSuite();
+        udidList.forEach(udid ->{
+                    prepareXmlTest(xmlSuite,udid);
+                }
+                );
+    }
+
+    public void runTestngTests(List<XmlSuite> xmlSuite){
+        TestNG testNG = new TestNG();
+        testNG.setXmlSuites(xmlSuite);
+        testNG.run();
     }
 
     public XmlSuite prepareXmlSuite(){
