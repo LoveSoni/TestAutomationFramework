@@ -1,4 +1,4 @@
-package testClasses;
+package listeners;
 
 import org.apache.log4j.Logger;
 import org.testng.ISuite;
@@ -42,7 +42,7 @@ public class DynamicTestngGenerator implements ISuiteListener {
         xmlTest.setParameters(parameters);
 
         List<XmlClass> xmlClasses = new ArrayList<>();
-        XmlClass xmlClass = new XmlClass(SearchTest.class);
+        XmlClass xmlClass = new XmlClass("");
         xmlClasses.add(xmlClass);
 
         xmlTest.setXmlClasses(xmlClasses);
