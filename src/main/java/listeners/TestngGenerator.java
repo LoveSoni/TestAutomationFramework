@@ -7,6 +7,7 @@ import org.testng.xml.XmlSuite;
 import org.testng.xml.XmlTest;
 import utilities.ShellExecutor;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -18,11 +19,21 @@ public class TestngGenerator {
 
     @Test
     public void generateTestng() {
-        XmlSuite xmlSuite = prepareXmlSuite();
-        udidList.forEach(udid ->
-                prepareXmlTest(xmlSuite, udid)
-        );
-        logger.info("Xml Suite Prepared - \n" + xmlSuite.toXml());
+        if (numberOfDeviceConnected < 1) {
+            logger.error("No device is connected");
+        } else {
+            XmlSuite xmlSuite = prepareXmlSuite();
+            udidList.forEach(udid ->
+                    prepareXmlTest(xmlSuite, udid)
+            );
+            logger.info("Xml Suite Prepared - \n" + xmlSuite.toXml());
+        }
+
+    }
+
+    public List<String> getTestList() {
+        String[] testClasses = testsName.split(",");
+        return Arrays.asList(testClasses);
     }
 
     public void runTestngTests(List<XmlSuite> xmlSuite) {
