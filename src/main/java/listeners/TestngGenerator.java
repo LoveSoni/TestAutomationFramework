@@ -38,7 +38,7 @@ public class TestngGenerator {
                     test.forEach(t -> {
                         XmlClass xmlClass = prepareXmlClass(t);
                         List<List<String>> methodList = divideList(getTestClassMethods(t), numberOfDeviceConnected);
-                        System.out.println("Method List for Test Class "+t+" : "+methodList);
+                        logger.info("Method List for Test Class "+t+" : "+methodList);
                         xmlClassList.add(xmlClass);
                     });
                 });
