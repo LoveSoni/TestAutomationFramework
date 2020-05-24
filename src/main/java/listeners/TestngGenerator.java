@@ -42,7 +42,7 @@ public class TestngGenerator {
                         List<List<String>> methodList = divideList(getTestClassMethods(testClassList.get(p).get(i)), numberOfDeviceConnected);
                         logger.info("Method List for Test Class "+testClassList.get(p).get(i)+" : "+methodList);
                         for (int j = 0; j < methodList.get(k).size(); j++) {
-                            XmlInclude xmlInclude = new XmlInclude(methodList.get(k).get(j));
+                            XmlInclude xmlInclude = prepareIncludeMethod(methodList.get(k).get(j));
                             xmlIncludeList.add(xmlInclude);
                         }
                         xmlClass.setIncludedMethods(xmlIncludeList);
@@ -54,7 +54,10 @@ public class TestngGenerator {
             }
             logger.info("Xml Suite Prepared - \n" + xmlSuite.toXml());
         }
+    }
 
+    public XmlInclude prepareIncludeMethod(String methodName){
+        return new XmlInclude(methodName);
     }
 
     public List divideList(List<String> methodList, int noOfDevices) {
