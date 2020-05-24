@@ -7,6 +7,8 @@ import org.testng.xml.XmlSuite;
 import org.testng.xml.XmlTest;
 import utilities.ShellExecutor;
 
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -27,7 +29,8 @@ public class TestngGenerator {
         } else {
             XmlSuite xmlSuite = prepareXmlSuite();
             udidList.forEach(udid -> {
-                                divideList(getTestList(),numberOfDeviceConnected);
+                        List<String> testList = divideList(getTestList(), numberOfDeviceConnected);
+                        logger.info("Test List :"+testList);
                         XmlTest xmlTest = prepareXmlTest(xmlSuite, udid);
                     }
             );
@@ -59,6 +62,24 @@ public class TestngGenerator {
         xmlSuite.setParallel(XmlSuite.ParallelMode.TESTS);
         xmlSuite.setThreadCount(numberOfDeviceConnected);
         return xmlSuite;
+    }
+
+    public List<String> getTestClassMethods(String testClass) {
+        List<String> methods = new ArrayList<>();
+        try {
+            Method[] method = Class.forName("tests." + testClass).getMethods();
+            for (Method meth : method) {
+                Annotation anotate[] = meth.getAnnotations();
+                for (Annotation anot : anotate) {
+                    if (anot.toString().contains("org.testng.annotations.Test")) {
+                        methods.add(meth.getName());
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return methods;
     }
 
     public XmlTest prepareXmlTest(XmlSuite xmlSuite, String udid) {
