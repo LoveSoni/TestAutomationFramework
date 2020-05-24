@@ -4,6 +4,7 @@ import org.apache.log4j.Logger;
 import org.testng.TestNG;
 import org.testng.annotations.Test;
 import org.testng.xml.XmlClass;
+import org.testng.xml.XmlInclude;
 import org.testng.xml.XmlSuite;
 import org.testng.xml.XmlTest;
 import utilities.ShellExecutor;
@@ -29,21 +30,36 @@ public class TestngGenerator {
             logger.error("No device is connected");
         } else {
             XmlSuite xmlSuite = prepareXmlSuite();
-            udidList.forEach(udid -> {
+//            udidList.forEach(udid -> {
+            for(int k=0;k<udidList.size();k++){
                 List<List<String>> testClassList = divideList(getTestList(), numberOfDeviceConnected);
                 logger.info("Test List :" + testClassList);
-                XmlTest xmlTest = prepareXmlTest(xmlSuite, udid);
+                XmlTest xmlTest = prepareXmlTest(xmlSuite, udidList.get(k));
                 List<XmlClass> xmlClassList = new ArrayList();
-                testClassList.forEach(test -> {
-                    test.forEach(t -> {
-                        XmlClass xmlClass = prepareXmlClass(t);
-                        List<List<String>> methodList = divideList(getTestClassMethods(t), numberOfDeviceConnected);
-                        logger.info("Method List for Test Class "+t+" : "+methodList);
+//                testClassList.forEach(test -> {
+//                    test.forEach(t -> {
+//                        XmlClass xmlClass = prepareXmlClass(t);
+//                        List<List<String>> methodList = divideList(getTestClassMethods(t), numberOfDeviceConnected);
+//                        logger.info("Method List for Test Class "+t+" : "+methodList);
+//                        xmlClassList.add(xmlClass);
+//                    });
+//                });
+                for(int p=0;p<testClassList.size();p++){
+                    for(int i=0;i<testClassList.get(p).size();i++){
+                        XmlClass xmlClass = prepareXmlClass(testClassList.get(p).get(i));
+                        List<XmlInclude> xmlIncludeList = new ArrayList<>();
+                        List<List<String>> methodList = divideList(getTestClassMethods(testClassList.get(p).get(i)), numberOfDeviceConnected);
+                        logger.info("Method List for Test Class "+testClassList.get(p).get(i)+" : "+methodList);
+                        for (int j = 0; j < methodList.get(k).size(); j++) {
+                            XmlInclude xmlInclude = new XmlInclude(methodList.get(k).get(j));
+                            xmlIncludeList.add(xmlInclude);
+                        }
+                        xmlClass.setIncludedMethods(xmlIncludeList);
                         xmlClassList.add(xmlClass);
-                    });
-                });
+                    }
+                }
                 xmlTest.setClasses(xmlClassList);
-            });
+            }
             logger.info("Xml Suite Prepared - \n" + xmlSuite.toXml());
         }
 
