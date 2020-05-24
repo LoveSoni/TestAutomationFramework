@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class TestngGenerator {
-    private String testsName = "LoginTest,DemoTest1,DemoTest2";
+    private String testsName = "SearchTest";
     private List<String> udidList = ShellExecutor.getListOfConnectedDevices();
     private int numberOfDeviceConnected = udidList.size();
     private Logger logger = Logger.getLogger(TestngGenerator.class);
@@ -38,6 +38,7 @@ public class TestngGenerator {
                     test.forEach(t -> {
                         XmlClass xmlClass = prepareXmlClass(t);
                         List<List<String>> methodList = divideList(getTestClassMethods(t), numberOfDeviceConnected);
+                        System.out.println("Method List for Test Class "+t+" : "+methodList);
                         xmlClassList.add(xmlClass);
                     });
                 });
@@ -81,7 +82,7 @@ public class TestngGenerator {
     public List<String> getTestClassMethods(String testClass) {
         List<String> methods = new ArrayList<>();
         try {
-            Method[] method = Class.forName("testsClasses." + testClass).getMethods();
+            Method[] method = Class.forName("testClasses." + testClass).getMethods();
             for (Method meth : method) {
                 Annotation anotate[] = meth.getAnnotations();
                 for (Annotation anot : anotate) {
