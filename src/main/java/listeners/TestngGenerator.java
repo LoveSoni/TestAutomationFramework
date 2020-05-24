@@ -30,18 +30,19 @@ public class TestngGenerator {
         } else {
             XmlSuite xmlSuite = prepareXmlSuite();
             udidList.forEach(udid -> {
-                        List<List<String>> testClassList = divideList(getTestList(), numberOfDeviceConnected);
-                        logger.info("Test List :"+testClassList);
-                        XmlTest xmlTest = prepareXmlTest(xmlSuite, udid);
-                        List<XmlClass> xmlClassList = new ArrayList();
-                        testClassList.forEach( test -> {
-                            test.forEach(t ->{
-                                XmlClass xmlClass = prepareXmlClass(t);
-                                xmlClassList.add(xmlClass);
-                            });
-                        });
-                        xmlTest.setClasses(xmlClassList);
+                List<List<String>> testClassList = divideList(getTestList(), numberOfDeviceConnected);
+                logger.info("Test List :" + testClassList);
+                XmlTest xmlTest = prepareXmlTest(xmlSuite, udid);
+                List<XmlClass> xmlClassList = new ArrayList();
+                testClassList.forEach(test -> {
+                    test.forEach(t -> {
+                        XmlClass xmlClass = prepareXmlClass(t);
+                        List<List<String>> methodList = divideList(getTestClassMethods(t), numberOfDeviceConnected);
+                        xmlClassList.add(xmlClass);
                     });
+                });
+                xmlTest.setClasses(xmlClassList);
+            });
             logger.info("Xml Suite Prepared - \n" + xmlSuite.toXml());
         }
 
