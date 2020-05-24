@@ -3,6 +3,7 @@ package listeners;
 import org.apache.log4j.Logger;
 import org.testng.TestNG;
 import org.testng.annotations.Test;
+import org.testng.xml.XmlClass;
 import org.testng.xml.XmlSuite;
 import org.testng.xml.XmlTest;
 import utilities.ShellExecutor;
@@ -29,11 +30,18 @@ public class TestngGenerator {
         } else {
             XmlSuite xmlSuite = prepareXmlSuite();
             udidList.forEach(udid -> {
-                        List<String> testClassList = divideList(getTestList(), numberOfDeviceConnected);
+                        List<List<String>> testClassList = divideList(getTestList(), numberOfDeviceConnected);
                         logger.info("Test List :"+testClassList);
                         XmlTest xmlTest = prepareXmlTest(xmlSuite, udid);
-                    }
-            );
+                        List<XmlClass> xmlClassList = new ArrayList();
+                        testClassList.forEach( test -> {
+                            test.forEach(t ->{
+                                XmlClass xmlClass = new XmlClass("testClasses."+t);
+                                xmlClassList.add(xmlClass);
+                            });
+                        });
+                        xmlTest.setClasses(xmlClassList);
+                    });
             logger.info("Xml Suite Prepared - \n" + xmlSuite.toXml());
         }
 
@@ -67,7 +75,7 @@ public class TestngGenerator {
     public List<String> getTestClassMethods(String testClass) {
         List<String> methods = new ArrayList<>();
         try {
-            Method[] method = Class.forName("tests." + testClass).getMethods();
+            Method[] method = Class.forName("testsClasses." + testClass).getMethods();
             for (Method meth : method) {
                 Annotation anotate[] = meth.getAnnotations();
                 for (Annotation anot : anotate) {
