@@ -29,8 +29,8 @@ public class TestngGenerator {
         } else {
             XmlSuite xmlSuite = prepareXmlSuite();
             udidList.forEach(udid -> {
-                        List<String> testList = divideList(getTestList(), numberOfDeviceConnected);
-                        logger.info("Test List :"+testList);
+                        List<String> testClassList = divideList(getTestList(), numberOfDeviceConnected);
+                        logger.info("Test List :"+testClassList);
                         XmlTest xmlTest = prepareXmlTest(xmlSuite, udid);
                     }
             );
