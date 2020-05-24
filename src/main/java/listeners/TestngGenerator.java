@@ -36,7 +36,7 @@ public class TestngGenerator {
                         List<XmlClass> xmlClassList = new ArrayList();
                         testClassList.forEach( test -> {
                             test.forEach(t ->{
-                                XmlClass xmlClass = new XmlClass("testClasses."+t);
+                                XmlClass xmlClass = prepareXmlClass(t);
                                 xmlClassList.add(xmlClass);
                             });
                         });
@@ -70,6 +70,11 @@ public class TestngGenerator {
         xmlSuite.setParallel(XmlSuite.ParallelMode.TESTS);
         xmlSuite.setThreadCount(numberOfDeviceConnected);
         return xmlSuite;
+    }
+
+    public XmlClass prepareXmlClass(String className) {
+        XmlClass xmlClass = new XmlClass("testClasses." + className);
+        return xmlClass;
     }
 
     public List<String> getTestClassMethods(String testClass) {
