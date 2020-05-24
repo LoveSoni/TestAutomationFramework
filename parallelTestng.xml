@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Practice Suite" parallel="tests" thread-count="2">
+    <test name="Test Basics 1">
+        <parameter name="udid" value="emulator-5554"/>
+        <classes>
+            <class name="testClasses.SearchTest"/>
+        </classes>
+    </test>
+    <test name="Test Basics 2">
+        <parameter name="udid" value="emulator-5556"/>
+        <classes>
+            <class name="testClasses.SearchTest"/>
+        </classes>
+    </test>
+</suite>
