@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class TestngGenerator {
-    private String testsName = "LoginTest,SearchTest";
+    private String testsName = System.getProperty("user.dir");
     private List<String> udidList = ShellExecutor.getListOfConnectedDevices();
     private int numberOfDeviceConnected = udidList.size();
     private Logger logger = Logger.getLogger(TestngGenerator.class);
