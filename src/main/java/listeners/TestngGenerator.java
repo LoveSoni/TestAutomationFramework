@@ -30,23 +30,25 @@ public class TestngGenerator {
             logger.error("No device is connected");
         } else {
             XmlSuite xmlSuite = prepareXmlSuite();
-            for(int k=0;k<udidList.size();k++){
+            for (int k = 0; k < udidList.size(); k++) {
                 List<List<String>> testClassList = divideList(getTestList(), numberOfDeviceConnected);
                 logger.info("Test List :" + testClassList);
                 XmlTest xmlTest = prepareXmlTest(xmlSuite, udidList.get(k));
                 List<XmlClass> xmlClassList = new ArrayList();
-                for(int p=0;p<testClassList.size();p++){
-                    for(int i=0;i<testClassList.get(p).size();i++){
+                for (int p = 0; p < testClassList.size(); p++) {
+                    for (int i = 0; i < testClassList.get(p).size(); i++) {
                         XmlClass xmlClass = prepareXmlClass(testClassList.get(p).get(i));
                         List<XmlInclude> xmlIncludeList = new ArrayList<>();
                         List<List<String>> methodList = divideList(getTestClassMethods(testClassList.get(p).get(i)), numberOfDeviceConnected);
-                        logger.info("Method List for Test Class "+testClassList.get(p).get(i)+" : "+methodList);
-                        for (int j = 0; j < methodList.get(k).size(); j++) {
-                            XmlInclude xmlInclude = prepareIncludeMethod(methodList.get(k).get(j));
-                            xmlIncludeList.add(xmlInclude);
+                        logger.info("Method List for Test Class " + testClassList.get(p).get(i) + " : " + methodList);
+                        if (!(getTestClassMethods(testClassList.get(p).get(i)).size() < k + 1)) {
+                            for (int j = 0; j < methodList.get(k).size(); j++) {
+                                XmlInclude xmlInclude = prepareIncludeMethod(methodList.get(k).get(j));
+                                xmlIncludeList.add(xmlInclude);
+                            }
+                            xmlClass.setIncludedMethods(xmlIncludeList);
+                            xmlClassList.add(xmlClass);
                         }
-                        xmlClass.setIncludedMethods(xmlIncludeList);
-                        xmlClassList.add(xmlClass);
                     }
                     xmlTest.setClasses(xmlClassList);
                 }
@@ -56,7 +58,7 @@ public class TestngGenerator {
         }
     }
 
-    public XmlInclude prepareIncludeMethod(String methodName){
+    public XmlInclude prepareIncludeMethod(String methodName) {
         return new XmlInclude(methodName);
     }
 
