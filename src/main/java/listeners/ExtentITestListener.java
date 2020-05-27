@@ -13,7 +13,7 @@ public class ExtentITestListener implements ITestListener {
 
     @Override
     public void onTestStart(ITestResult result) {
-        extentTest = extentReports.createTest(result.getMethod().getMethodName());
+        extentTest = extentReports.createTest(result.getMethod().getRealClass().getSimpleName()+"_"+result.getMethod().getMethodName());
     }
 
     @Override
@@ -45,6 +45,7 @@ public class ExtentITestListener implements ITestListener {
 
     @Override
     public void onFinish(ITestContext context) {
+        extentReports.flush();
     }
 
 }
