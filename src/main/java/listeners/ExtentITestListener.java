@@ -2,18 +2,17 @@ package listeners;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
-import org.testng.ITestContext;
-import org.testng.ITestListener;
-import org.testng.ITestResult;
+import org.testng.*;
 import utilities.ExtentUtility;
 
 public class ExtentITestListener implements ITestListener {
     private ExtentReports extentReports = ExtentUtility.initializeReports();
     private ExtentTest extentTest;
+    private ExtentTest parentTest;
 
     @Override
     public void onTestStart(ITestResult result) {
-        extentTest = extentReports.createTest(result.getMethod().getRealClass().getSimpleName()+"_"+result.getMethod().getMethodName());
+        extentTest = extentReports.createTest(result.getMethod().getMethodName());
     }
 
     @Override
@@ -41,6 +40,7 @@ public class ExtentITestListener implements ITestListener {
 
     @Override
     public void onStart(ITestContext context) {
+
     }
 
     @Override
