@@ -14,7 +14,6 @@ public class Api {
         GET, POST, PUT, PATCH;
     }
 
-
     public Api() {
         System.out.println("");
     }
